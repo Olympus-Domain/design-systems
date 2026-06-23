@@ -1,0 +1,217 @@
+<!-- @dsCard group="Screens" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workout Screens</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0F0F11; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 32px; }
+  h1 { font-size: 24px; margin-bottom: 8px; color: #F5E989; }
+  .subtitle { color: #8D8D9C; font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 14px; color: #8076AB; margin-bottom: 12px; margin-top: 28px; text-transform: uppercase; letter-spacing: 1px; }
+  .screens-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+  .phone { background: #141121; border-radius: 20px; border: 2px solid #232329; overflow: hidden; aspect-ratio: 9/17; display: flex; flex-direction: column; }
+  .ph-status { height: 24px; display: flex; align-items: center; justify-content: center; font-size: 8px; color: #717171; }
+  .ph-header { height: 40px; display: flex; align-items: center; padding: 0 12px; gap: 6px; border-bottom: 1px solid #232329; flex-shrink: 0; }
+  .ph-back { color: #F5E989; font-size: 14px; }
+  .ph-title { font-size: 13px; font-weight: 600; flex: 1; }
+  .ph-action { width: 16px; height: 16px; border-radius: 3px; background: #232329; }
+  .ph-body { flex: 1; padding: 12px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
+  .ph-navbar { height: 40px; display: flex; align-items: center; justify-content: space-around; border-top: 1px solid #232329; flex-shrink: 0; }
+  .ph-nav-dot { width: 6px; height: 6px; border-radius: 3px; background: #302D3E; }
+  .ph-nav-dot-active { background: #F5E989; }
+  .ph-input { height: 28px; border: 1px solid #1C1C24; border-radius: 6px; display: flex; align-items: center; padding: 0 8px; }
+  .ph-input-label { font-size: 8px; color: #8D8D9C; margin-bottom: 2px; }
+  .ph-input-text { font-size: 9px; color: #8D8D9C; }
+  .ph-btn { height: 32px; border-radius: 9999px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; }
+  .ph-btn-primary { background: #F5E989; color: #141121; }
+  .ph-btn-outline { border: 1.5px solid #F5E989; color: #F5E989; }
+  .ph-card { background: #1d1b2a; border-radius: 8px; padding: 8px; margin-bottom: 4px; }
+  .ph-skeleton { background: #2c2c2e; border-radius: 4px; }
+  .ph-row { display: flex; align-items: center; gap: 6px; padding: 6px 0; border-bottom: 1px solid #232329; }
+  .ph-row-text { flex: 1; font-size: 9px; }
+  .ph-row-chevron { font-size: 10px; color: #D9D9D9; }
+  .ph-toggle { display: flex; gap: 0; align-self: center; }
+  .ph-toggle-opt { padding: 3px 8px; border-radius: 8px; font-size: 8px; color: #8D8D9C; }
+  .ph-toggle-active { background: #F5E989; color: #141121; font-weight: 600; }
+  .ph-set { display: flex; gap: 4px; align-items: center; padding: 4px 0; border-bottom: 1px solid #232329; }
+  .ph-set-num { width: 16px; height: 16px; border-radius: 8px; background: #232329; display: flex; align-items: center; justify-content: center; font-size: 7px; color: #8D8D9C; }
+  .ph-set-input { flex: 1; height: 22px; background: #232329; border-radius: 4px; display: flex; align-items: center; padding: 0 4px; font-size: 8px; color: #F5E989; }
+  .ph-set-check { width: 16px; height: 16px; border-radius: 4px; border: 1px solid #302D3E; }
+  .ph-set-done { background: #54BE98; border-color: #54BE98; }
+  .ph-progress { background: #232329; border-radius: 6px; padding: 6px 8px; display: flex; justify-content: space-between; font-size: 8px; }
+  .screen-label { text-align: center; font-size: 11px; font-weight: 600; color: #F5E989; margin-top: 8px; }
+  .screen-deps { text-align: center; font-size: 9px; color: #717171; margin-top: 2px; line-height: 1.4; }
+</style>
+</head>
+<body>
+  <h1>Workout Screens</h1>
+  <p class="subtitle">8 main screens + 5 sub-components — the core workout creation and tracking flow.</p>
+
+  <h2>Workout Selection & Setup</h2>
+  <div class="screens-row">
+    <!-- WorkoutSelectScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-title">Workouts</div><div class="ph-action"></div></div>
+        <div class="ph-body" style="gap: 0;">
+          <div class="ph-row"><div class="ph-row-text">Push Day A</div><div class="ph-row-chevron">&#x203A;</div></div>
+          <div class="ph-row"><div class="ph-row-text">Pull Day A</div><div class="ph-row-chevron">&#x203A;</div></div>
+          <div class="ph-row"><div class="ph-row-text">Legs Day</div><div class="ph-row-chevron">&#x203A;</div></div>
+          <div class="ph-row"><div class="ph-row-text">Upper Body</div><div class="ph-row-chevron">&#x203A;</div></div>
+          <div class="ph-row"><div class="ph-row-text" style="color: #F5E989;">+ New Workout</div></div>
+          <div class="ph-row"><div class="ph-row-text" style="color: #F5E989;">+ New Template</div></div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot"></div><div class="ph-nav-dot ph-nav-dot-active"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div></div>
+      </div>
+      <div class="screen-label">WorkoutSelectScreen</div>
+      <div class="screen-deps">FlexibleArrowButton, NavBar, ScreenContainer, ScreenHeader</div>
+    </div>
+
+    <!-- NewWorkoutScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-title">New Workout</div><div class="ph-action"></div></div>
+        <div class="ph-body">
+          <div><div class="ph-input-label">Workout Name</div><div class="ph-input"><span class="ph-input-text">Push Day A</span></div></div>
+          <div class="ph-toggle"><div class="ph-toggle-opt ph-toggle-active">Weights</div><div class="ph-toggle-opt">Cardio</div></div>
+          <div style="font-size: 8px; color: #8D8D9C;">Rest Time</div>
+          <div style="height: 3px; background: #302D3E; border-radius: 2px; position: relative;"><div style="width: 60%; height: 3px; background: #F5E989; border-radius: 2px;"></div></div>
+          <div class="ph-btn ph-btn-primary" style="margin-top: auto;">Start Workout</div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot"></div><div class="ph-nav-dot ph-nav-dot-active"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div></div>
+      </div>
+      <div class="screen-label">NewWorkoutScreen</div>
+      <div class="screen-deps">TwoOptionToggle, RestTimeSlider, ScreenContainer, ScreenHeader, + more</div>
+    </div>
+
+    <!-- NewTemplateScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-title">New Template</div></div>
+        <div class="ph-body">
+          <div><div class="ph-input-label">Template Name</div><div class="ph-input"></div></div>
+          <div class="ph-toggle"><div class="ph-toggle-opt ph-toggle-active">Weights</div><div class="ph-toggle-opt">Cardio</div></div>
+          <div><div class="ph-input-label">Notes</div><div class="ph-input" style="height: 40px;"></div></div>
+          <div style="font-size: 8px; color: #8D8D9C;">Rest Time</div>
+          <div style="height: 3px; background: #302D3E; border-radius: 2px;"><div style="width: 40%; height: 3px; background: #F5E989; border-radius: 2px;"></div></div>
+          <div class="ph-btn ph-btn-primary" style="margin-top: auto;">Create Template</div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot"></div><div class="ph-nav-dot ph-nav-dot-active"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div></div>
+      </div>
+      <div class="screen-label">NewTemplateScreen</div>
+      <div class="screen-deps">Same as NewWorkout without ChooseWorkoutTargetAthleteModal</div>
+    </div>
+
+    <!-- NewProgramScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-title">New Program</div></div>
+        <div class="ph-body">
+          <div><div class="ph-input-label">Program Name</div><div class="ph-input"></div></div>
+          <div><div class="ph-input-label">Description</div><div class="ph-input" style="height: 40px;"></div></div>
+          <div class="ph-btn ph-btn-primary" style="margin-top: auto;">Create Program</div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot"></div><div class="ph-nav-dot ph-nav-dot-active"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div></div>
+      </div>
+      <div class="screen-label">NewProgramScreen</div>
+      <div class="screen-deps">FlexibleLargeButton, FlexibleTextInput, ScreenContainer, ScreenHeader</div>
+    </div>
+  </div>
+
+  <h2>Active Workout & Completion</h2>
+  <div class="screens-row">
+    <!-- WorkoutSummaryScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-progress"><span style="color: #F5E989;">In progress</span><span style="color: #8D8D9C;">00:42:15</span></div>
+        <div class="ph-body" style="gap: 4px;">
+          <div class="ph-card">
+            <div style="font-size: 10px; font-weight: 600; margin-bottom: 4px;">Bench Press</div>
+            <div class="ph-set"><div class="ph-set-num">1</div><div class="ph-set-input">185</div><div class="ph-set-input">8</div><div class="ph-set-check ph-set-done"></div></div>
+            <div class="ph-set"><div class="ph-set-num">2</div><div class="ph-set-input">185</div><div class="ph-set-input">7</div><div class="ph-set-check ph-set-done"></div></div>
+            <div class="ph-set"><div class="ph-set-num">3</div><div class="ph-set-input"></div><div class="ph-set-input"></div><div class="ph-set-check"></div></div>
+          </div>
+          <div style="display: flex; gap: 4px; font-size: 8px;">
+            <div style="flex:1; padding:6px; border:1px solid #3b3651; border-radius:6px; text-align:center; color:#8D8D9C;">+ Exercise</div>
+            <div style="flex:1; padding:6px; border:1px solid #3b3651; border-radius:6px; text-align:center; color:#8D8D9C;">+ Superset</div>
+          </div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot"></div><div class="ph-nav-dot ph-nav-dot-active"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div></div>
+      </div>
+      <div class="screen-label">WorkoutSummaryScreen</div>
+      <div class="screen-deps">ExerciseCard, SetInput, RestTimer, ExerciseSupersetRest, WorkoutInProgressBar, + more</div>
+    </div>
+
+    <!-- EndWorkoutScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-title">End Workout</div></div>
+        <div class="ph-body">
+          <div style="display: flex; gap: 8px; font-size: 8px; text-align: center;">
+            <div style="flex:1;"><div style="font-size: 14px; font-weight: 700; color: #F5E989;">12,450</div><div style="color:#717171;">lbs</div></div>
+            <div style="flex:1;"><div style="font-size: 14px; font-weight: 700; color: #F5E989;">58</div><div style="color:#717171;">min</div></div>
+            <div style="flex:1;"><div style="font-size: 14px; font-weight: 700; color: #F5E989;">3</div><div style="color:#717171;">PRs</div></div>
+          </div>
+          <div><div class="ph-input-label">Caption</div><div class="ph-input" style="height: 40px;"></div></div>
+          <div><div class="ph-input-label">Location</div><div class="ph-input"><span class="ph-input-text">&#x1F4CD; Add location</span></div></div>
+          <div style="display:flex; gap:4px;">
+            <div class="ph-skeleton" style="width:48px; height:48px; border-radius:8px;"></div>
+            <div class="ph-skeleton" style="width:48px; height:48px; border-radius:8px;"></div>
+            <div style="width:48px; height:48px; border-radius:8px; border:1px dashed #3b3651; display:flex; align-items:center; justify-content:center; font-size:16px; color:#3b3651;">+</div>
+          </div>
+          <div class="ph-btn ph-btn-primary" style="margin-top: auto;">Post Workout</div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot"></div><div class="ph-nav-dot ph-nav-dot-active"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div></div>
+      </div>
+      <div class="screen-label">EndWorkoutScreen</div>
+      <div class="screen-deps">EndWorkoutHeader, LocationPicker, LocationSearchModal, SocialPostMedia, SocialPostMediaItem, + form</div>
+    </div>
+
+    <!-- DetailedWorkoutView -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-back">&#x2039;</div><div class="ph-title" style="font-size: 11px;">Workout Detail</div><div class="ph-action"></div></div>
+        <div class="ph-body" style="gap: 4px;">
+          <div class="ph-card">
+            <div style="display:flex; gap:6px; align-items:center; margin-bottom:4px;"><div style="width:20px; height:20px; border-radius:10px; background:#302D3E;"></div><div style="font-size:9px; font-weight:600;">Push Day A</div></div>
+            <div style="display:flex; gap:8px; font-size:7px; color:#8D8D9C;"><span>12,450 lbs</span><span>58 min</span><span>3 PRs</span></div>
+          </div>
+          <div class="ph-toggle"><div class="ph-toggle-opt ph-toggle-active">Summary</div><div class="ph-toggle-opt">Exercises</div></div>
+          <div class="ph-row"><div class="ph-row-text">Bench Press &bull; 4&times;8</div></div>
+          <div class="ph-row"><div class="ph-row-text">OHP &bull; 3&times;10</div></div>
+          <div class="ph-row"><div class="ph-row-text">Incline DB &bull; 3&times;12</div></div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot"></div><div class="ph-nav-dot ph-nav-dot-active"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div></div>
+      </div>
+      <div class="screen-label">DetailedWorkoutView</div>
+      <div class="screen-deps">FlexibleHeader, MultipleChoice, SocialPostHeader, VolumeTimePRsBadges</div>
+    </div>
+
+    <!-- Sub-components list -->
+    <div class="screen-item">
+      <div style="background: #1d1b2a; border-radius: 16px; padding: 16px; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+        <div style="font-size: 12px; font-weight: 600; color: #F5E989; margin-bottom: 12px;">Screen Sub-components</div>
+        <div style="font-size: 10px; color: #8D8D9C; line-height: 1.8;">
+          <strong style="color:#fff;">LocationPicker</strong> — map-based location selector<br>
+          <strong style="color:#fff;">LocationSearchModal</strong> — text search for locations (uses PopUpClose)<br>
+          <strong style="color:#fff;">SocialPostMedia</strong> — media gallery for post attachments<br>
+          <strong style="color:#fff;">SocialPostMediaItem</strong> — single image/heatmap in gallery<br>
+          <strong style="color:#fff;">useHeatMap</strong> — hook generating heatmap from workout data
+        </div>
+      </div>
+      <div class="screen-label">EndWorkoutScreen/*</div>
+      <div class="screen-deps">5 sub-components in WorkoutScreens/components/</div>
+    </div>
+  </div>
+</body>
+</html>

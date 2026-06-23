@@ -1,0 +1,225 @@
+<!-- @dsCard group="Patterns" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Screen Layout Patterns</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0F0F11; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 32px; }
+  h1 { font-size: 24px; margin-bottom: 8px; color: #F5E989; }
+  .subtitle { color: #8D8D9C; font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 14px; color: #8076AB; margin-bottom: 8px; margin-top: 28px; text-transform: uppercase; letter-spacing: 1px; }
+  .pattern-desc { font-size: 13px; color: #8D8D9C; margin-bottom: 16px; }
+  .screens-list { font-size: 11px; color: #717171; margin-bottom: 16px; }
+
+  .patterns-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 32px; }
+
+  .phone-frame { background: #141121; border-radius: 24px; border: 2px solid #232329; overflow: hidden; aspect-ratio: 9/16; display: flex; flex-direction: column; }
+  .phone-status { height: 32px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #717171; }
+
+  .ph-header { height: 48px; display: flex; align-items: center; padding: 0 16px; gap: 8px; border-bottom: 1px solid #232329; flex-shrink: 0; }
+  .ph-header-back { color: #F5E989; font-size: 18px; }
+  .ph-header-title { font-size: 16px; font-weight: 600; flex: 1; }
+  .ph-header-action { width: 20px; height: 20px; border-radius: 4px; background: #232329; }
+
+  .ph-body { flex: 1; padding: 16px; display: flex; flex-direction: column; gap: 12px; overflow: hidden; }
+
+  .ph-input { height: 36px; border: 1px solid #1C1C24; border-radius: 8px; padding: 0 10px; display: flex; align-items: center; }
+  .ph-input-label { font-size: 10px; color: #8D8D9C; margin-bottom: 4px; }
+  .ph-input-placeholder { font-size: 12px; color: #8D8D9C; }
+
+  .ph-btn { height: 40px; border-radius: 9999px; border: 2px solid #F5E989; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #F5E989; font-weight: 600; margin-top: auto; }
+  .ph-btn-filled { background: #F5E989; color: #141121; }
+
+  .ph-navbar { height: 52px; display: flex; align-items: center; justify-content: space-around; border-top: 1px solid #232329; flex-shrink: 0; padding: 0 8px; }
+  .ph-nav-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .ph-nav-icon { width: 20px; height: 20px; border-radius: 4px; background: #302D3E; }
+  .ph-nav-icon-active { background: #F5E989; }
+  .ph-nav-label { font-size: 8px; color: #717171; }
+  .ph-nav-label-active { color: #F5E989; }
+
+  .ph-list-item { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #232329; gap: 10px; }
+  .ph-list-avatar { width: 28px; height: 28px; border-radius: 14px; background: #302D3E; flex-shrink: 0; }
+  .ph-list-text { flex: 1; }
+  .ph-list-title { font-size: 12px; margin-bottom: 2px; }
+  .ph-list-sub { font-size: 10px; color: #8D8D9C; }
+  .ph-list-chevron { color: #D9D9D9; font-size: 14px; }
+
+  .ph-card { background: #1d1b2a; border-radius: 12px; padding: 12px; }
+  .ph-card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .ph-card-avatar { width: 24px; height: 24px; border-radius: 12px; background: #302D3E; }
+  .ph-card-name { font-size: 11px; }
+  .ph-card-time { font-size: 9px; color: #717171; }
+  .ph-card-body { height: 60px; background: #232329; border-radius: 8px; margin-bottom: 8px; }
+  .ph-card-stats { display: flex; gap: 12px; }
+  .ph-card-stat { font-size: 9px; color: #8D8D9C; }
+
+  .ph-toggle { display: flex; gap: 0; align-self: center; margin-bottom: 4px; }
+  .ph-toggle-opt { padding: 4px 12px; border-radius: 12px; font-size: 10px; color: #8D8D9C; }
+  .ph-toggle-active { background: #F5E989; color: #141121; font-weight: 600; }
+
+  .pattern-label { text-align: center; font-size: 13px; font-weight: 600; color: #F5E989; margin-top: 12px; }
+  .pattern-components { text-align: center; font-size: 10px; color: #8D8D9C; margin-top: 4px; }
+</style>
+</head>
+<body>
+  <h1>Screen Layout Patterns</h1>
+  <p class="subtitle">3 recurring compositions define how most screens are built.</p>
+
+  <div class="patterns-row">
+
+    <!-- Pattern 1: Form Screen -->
+    <div>
+      <div class="phone-frame">
+        <div class="phone-status">9:41</div>
+        <div class="ph-header">
+          <div class="ph-header-back">&#x2039;</div>
+          <div class="ph-header-title">Sign Up</div>
+        </div>
+        <div class="ph-body">
+          <div>
+            <div class="ph-input-label">Email</div>
+            <div class="ph-input"><span class="ph-input-placeholder">Enter email</span></div>
+          </div>
+          <div>
+            <div class="ph-input-label">Username</div>
+            <div class="ph-input"><span class="ph-input-placeholder">Choose username</span></div>
+          </div>
+          <div>
+            <div class="ph-input-label">Password</div>
+            <div class="ph-input"><span class="ph-input-placeholder">Create password</span></div>
+          </div>
+          <div>
+            <div class="ph-input-label">Confirm Password</div>
+            <div class="ph-input"><span class="ph-input-placeholder">Confirm password</span></div>
+          </div>
+          <div class="ph-btn ph-btn-filled">Create Account</div>
+        </div>
+      </div>
+      <div class="pattern-label">Form Screen</div>
+      <div class="pattern-components">FlexibleHeader + FlexibleTextInput &times; N + FlexibleLargeButton</div>
+      <div class="screens-list" style="text-align:center; margin-top:8px">Login, Signup, ForgotPass, ConfirmPassword, Account, ChangePassword, EditProfile, CreateProfile</div>
+    </div>
+
+    <!-- Pattern 2: Browse/List Screen -->
+    <div>
+      <div class="phone-frame">
+        <div class="phone-status">9:41</div>
+        <div class="ph-header">
+          <div class="ph-header-title">Workouts</div>
+          <div class="ph-header-action"></div>
+        </div>
+        <div class="ph-body" style="gap: 0;">
+          <div class="ph-list-item">
+            <div class="ph-list-avatar"></div>
+            <div class="ph-list-text">
+              <div class="ph-list-title">Push Day A</div>
+              <div class="ph-list-sub">Chest, Shoulders, Triceps</div>
+            </div>
+            <div class="ph-list-chevron">&#x203A;</div>
+          </div>
+          <div class="ph-list-item">
+            <div class="ph-list-avatar"></div>
+            <div class="ph-list-text">
+              <div class="ph-list-title">Pull Day A</div>
+              <div class="ph-list-sub">Back, Biceps</div>
+            </div>
+            <div class="ph-list-chevron">&#x203A;</div>
+          </div>
+          <div class="ph-list-item">
+            <div class="ph-list-avatar"></div>
+            <div class="ph-list-text">
+              <div class="ph-list-title">Legs Day</div>
+              <div class="ph-list-sub">Quads, Hamstrings, Calves</div>
+            </div>
+            <div class="ph-list-chevron">&#x203A;</div>
+          </div>
+          <div class="ph-list-item">
+            <div class="ph-list-avatar"></div>
+            <div class="ph-list-text">
+              <div class="ph-list-title">Upper Body</div>
+              <div class="ph-list-sub">Full upper body</div>
+            </div>
+            <div class="ph-list-chevron">&#x203A;</div>
+          </div>
+        </div>
+        <div class="ph-navbar">
+          <div class="ph-nav-item"><div class="ph-nav-icon"></div><div class="ph-nav-label">Home</div></div>
+          <div class="ph-nav-item"><div class="ph-nav-icon ph-nav-icon-active"></div><div class="ph-nav-label ph-nav-label-active">Workout</div></div>
+          <div class="ph-nav-item"><div class="ph-nav-icon"></div><div class="ph-nav-label">Stats</div></div>
+          <div class="ph-nav-item"><div class="ph-nav-icon"></div><div class="ph-nav-label">Profile</div></div>
+        </div>
+      </div>
+      <div class="pattern-label">Browse / List Screen</div>
+      <div class="pattern-components">ScreenContainer + ScreenHeader + [list] + NavBar</div>
+      <div class="screens-list" style="text-align:center; margin-top:8px">WorkoutSelect, Home, NewWorkout, NewTemplate, NewProgram, ExercisesStats</div>
+    </div>
+
+    <!-- Pattern 3: Detail Screen -->
+    <div>
+      <div class="phone-frame">
+        <div class="phone-status">9:41</div>
+        <div class="ph-header">
+          <div class="ph-header-back">&#x2039;</div>
+          <div class="ph-header-title">Workout Detail</div>
+        </div>
+        <div class="ph-body" style="gap: 8px;">
+          <div class="ph-card">
+            <div class="ph-card-header">
+              <div class="ph-card-avatar"></div>
+              <div>
+                <div class="ph-card-name">Push Day A</div>
+                <div class="ph-card-time">Today, 2:30 PM &bull; 58 min</div>
+              </div>
+            </div>
+            <div class="ph-card-body"></div>
+            <div class="ph-card-stats">
+              <div class="ph-card-stat">&#x1F4AA; 12,450 lbs</div>
+              <div class="ph-card-stat">&#x23F1; 58 min</div>
+              <div class="ph-card-stat">&#x1F3C6; 3 PRs</div>
+            </div>
+          </div>
+          <div class="ph-toggle">
+            <div class="ph-toggle-opt ph-toggle-active">Summary</div>
+            <div class="ph-toggle-opt">Exercises</div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div class="ph-list-item" style="padding: 6px 0;">
+              <div class="ph-list-text">
+                <div class="ph-list-title" style="font-size:11px">Bench Press</div>
+                <div class="ph-list-sub">4 &times; 8 @ 185 lbs</div>
+              </div>
+            </div>
+            <div class="ph-list-item" style="padding: 6px 0;">
+              <div class="ph-list-text">
+                <div class="ph-list-title" style="font-size:11px">Incline DB Press</div>
+                <div class="ph-list-sub">3 &times; 10 @ 60 lbs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ph-navbar">
+          <div class="ph-nav-item"><div class="ph-nav-icon"></div><div class="ph-nav-label">Home</div></div>
+          <div class="ph-nav-item"><div class="ph-nav-icon ph-nav-icon-active"></div><div class="ph-nav-label ph-nav-label-active">Workout</div></div>
+          <div class="ph-nav-item"><div class="ph-nav-icon"></div><div class="ph-nav-label">Stats</div></div>
+          <div class="ph-nav-item"><div class="ph-nav-icon"></div><div class="ph-nav-label">Profile</div></div>
+        </div>
+      </div>
+      <div class="pattern-label">Detail / Summary Screen</div>
+      <div class="pattern-components">FlexibleHeader (back) + [content] + NavBar</div>
+      <div class="screens-list" style="text-align:center; margin-top:8px">DetailedWorkoutView, SinglePost, WorkoutSummary, ProfileHome</div>
+    </div>
+
+  </div>
+
+  <h2 style="margin-top: 0;">Component Composition</h2>
+  <div style="background: #1d1b2a; border-radius: 12px; padding: 20px; font-size: 13px; font-family: monospace; line-height: 2; color: #8D8D9C;">
+    <div><span style="color:#8076AB">Form:</span> <span style="color:#F5E989">FlexibleHeader</span> &rarr; <span style="color:#F5E989">FlexibleTextInput</span> &times;N &rarr; <span style="color:#F5E989">FlexibleLargeButton</span> &rarr; <span style="color:#F5E989">LoadingIcon</span></div>
+    <div><span style="color:#8076AB">Browse:</span> <span style="color:#F5E989">ScreenContainer</span> &rarr; <span style="color:#F5E989">ScreenHeader</span> &rarr; [content] &rarr; <span style="color:#54BE98">NavBar</span></div>
+    <div><span style="color:#8076AB">Detail:</span> <span style="color:#F5E989">FlexibleHeader</span> <span style="color:#717171">(back)</span> &rarr; [content] &rarr; <span style="color:#54BE98">NavBar</span></div>
+    <div style="margin-top: 8px; font-size: 11px;"><span style="color:#F5E989">Yellow</span> = DS-ready &nbsp;&nbsp; <span style="color:#54BE98">Green</span> = App-specific</div>
+  </div>
+</body>
+</html>

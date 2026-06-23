@@ -1,0 +1,482 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile, Stats & Analytics</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #141121; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 32px; }
+  h1 { font-size: 24px; margin-bottom: 8px; color: #F5E989; }
+  .subtitle { color: #8D8D9C; font-size: 14px; margin-bottom: 32px; }
+  .component-card { background: #1d1b2a; border-radius: 16px; padding: 24px; margin-bottom: 16px; }
+  .component-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .component-meta { font-size: 12px; color: #8D8D9C; margin-bottom: 4px; }
+  .component-deps { font-size: 11px; color: #717171; margin-bottom: 16px; }
+  .preview { padding: 20px; background: #141121; border-radius: 12px; }
+  .badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-left: 4px; }
+  .badge-app { background: #302D3E; color: #FF6565; }
+  .badge-possible { background: #232329; color: #E6C466; }
+  .badge-ready { background: #232329; color: #54BE98; }
+
+  .profile-header { display: flex; gap: 16px; align-items: center; margin-bottom: 16px; }
+  .profile-avatar { width: 72px; height: 72px; border-radius: 36px; background: #302D3E; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+  .profile-info { flex: 1; }
+  .profile-name { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+  .profile-handle { font-size: 13px; color: #8D8D9C; }
+  .profile-stats { display: flex; gap: 20px; margin-top: 8px; }
+  .profile-stat { text-align: center; }
+  .profile-stat-num { font-size: 16px; font-weight: 700; }
+  .profile-stat-label { font-size: 11px; color: #717171; }
+
+  .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .cal-day { width: 100%; aspect-ratio: 1; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+  .cal-header { font-size: 9px; color: #717171; text-align: center; padding: 4px 0; }
+  .cal-empty { background: transparent; }
+  .cal-rest { background: #232329; color: #8D8D9C; }
+  .cal-workout { background: #F5E989; color: #141121; font-weight: 600; }
+  .cal-streak { background: #54BE98; color: #141121; font-weight: 600; }
+
+  .chart-placeholder { height: 160px; background: #1d1b2a; border-radius: 12px; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 16px; gap: 4px; }
+  .chart-bar { background: #F5E989; border-radius: 4px 4px 0 0; flex: 1; min-height: 10px; }
+  .chart-line { position: absolute; bottom: 40px; left: 16px; right: 16px; height: 2px; }
+  .chart-line svg { width: 100%; height: 60px; position: absolute; bottom: 0; }
+
+  .notification-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #232329; }
+  .notif-avatar { width: 36px; height: 36px; border-radius: 18px; background: #302D3E; flex-shrink: 0; }
+  .notif-text { flex: 1; font-size: 13px; }
+  .notif-time { font-size: 11px; color: #717171; }
+  .notif-action { width: 48px; height: 48px; border-radius: 8px; background: #232329; flex-shrink: 0; }
+
+  .referral-badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; border-radius: 9999px; font-size: 11px; font-weight: 600; }
+
+  .stored-workout { background: #1d1b2a; border-radius: 12px; padding: 14px; margin-bottom: 8px; }
+  .stored-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .stored-name { font-size: 14px; font-weight: 600; }
+  .stored-date { font-size: 11px; color: #717171; }
+  .stored-exercises { font-size: 12px; color: #8D8D9C; }
+
+  .search-bar { display: flex; align-items: center; gap: 8px; background: #232329; border-radius: 12px; padding: 8px 12px; }
+  .search-icon { color: #8D8D9C; font-size: 16px; }
+  .search-placeholder { color: #6e7191; font-size: 14px; }
+
+  .heatmap-placeholder { display: flex; gap: 2px; justify-content: center; }
+  .heatmap-body { display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(12, 1fr); gap: 1px; width: 80px; height: 140px; }
+  .heatmap-segment { border-radius: 2px; }
+
+  .ocr-queue-item { background: #1d1b2a; border-radius: 12px; padding: 14px; display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .ocr-thumb { width: 48px; height: 64px; border-radius: 8px; background: #302D3E; flex-shrink: 0; }
+  .ocr-info { flex: 1; }
+  .ocr-status { font-size: 11px; padding: 2px 8px; border-radius: 4px; display: inline-block; }
+</style>
+</head>
+<body>
+  <h1>Profile, Stats, Analytics & Other</h1>
+  <p class="subtitle">Covering NewComponents (profile/notifications/referrals), StatsComponents, AnalyticsComponents, HeatmapComponents, and OCRComponents.</p>
+
+  <div class="component-card">
+    <div class="component-name">Profile Components <span class="badge badge-app">App</span></div>
+    <div class="component-meta">EditableProfilePic, ProfilePictureSmall, NotificationBell, NotificationObject, UserCardWithPropic, RelatedUserCard, RequestedFollowerList</div>
+    <div class="component-deps">Deps: UserContext, SocialRequest, APIRequest, navigation</div>
+    <div class="preview">
+      <div class="profile-header">
+        <div class="profile-avatar">&#x1F464;</div>
+        <div class="profile-info">
+          <div class="profile-name">John Smith</div>
+          <div class="profile-handle">@john_lifts</div>
+          <div class="profile-stats">
+            <div class="profile-stat"><div class="profile-stat-num">142</div><div class="profile-stat-label" style="color:#717171">Followers</div></div>
+            <div class="profile-stat"><div class="profile-stat-num">89</div><div class="profile-stat-label" style="color:#717171">Following</div></div>
+            <div class="profile-stat"><div class="profile-stat-num">256</div><div class="profile-stat-label" style="color:#717171">Workouts</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size: 11px; color: #717171; margin-top: 8px;">Note: Profile pic borderRadius is inconsistent — uses 50, 80, and 999 interchangeably for "circle"</div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">NotificationObject <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Single notification row — avatar, text, timestamp, optional action preview.</div>
+    <div class="component-deps">Deps: navigation (push to profile/post)</div>
+    <div class="preview">
+      <div class="notification-row">
+        <div class="notif-avatar"></div>
+        <div class="notif-text"><strong>sarah_strong</strong> liked your workout</div>
+        <div class="notif-time">2h</div>
+      </div>
+      <div class="notification-row">
+        <div class="notif-avatar"></div>
+        <div class="notif-text"><strong>mike_fitness</strong> started following you</div>
+        <div class="notif-time">5h</div>
+      </div>
+      <div class="notification-row">
+        <div class="notif-avatar"></div>
+        <div class="notif-text"><strong>coach_dan</strong> commented on your post</div>
+        <div class="notif-time">1d</div>
+        <div class="notif-action"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">AdditionalAccountInfoModal <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Modal shown during profile creation to collect gender and bodyweight.</div>
+    <div class="component-deps">Deps: UserContext</div>
+    <div class="preview">
+      <div style="background: rgba(0,0,0,0.6); border-radius: 12px; padding: 20px; display: flex; justify-content: center;">
+        <div style="background: #1d1b2a; border-radius: 16px; padding: 24px; width: 280px;">
+          <div style="font-size: 16px; font-weight: 600; margin-bottom: 16px; text-align: center;">Additional Info</div>
+          <div style="margin-bottom: 12px;">
+            <div style="font-size: 12px; color: #8D8D9C; margin-bottom: 4px;">Gender</div>
+            <div style="display: flex; gap: 8px;">
+              <div style="flex: 1; padding: 8px; border-radius: 8px; border: 1px solid #F5E989; text-align: center; font-size: 13px; color: #F5E989;">Male</div>
+              <div style="flex: 1; padding: 8px; border-radius: 8px; border: 1px solid #3b3651; text-align: center; font-size: 13px; color: #8D8D9C;">Female</div>
+            </div>
+          </div>
+          <div style="margin-bottom: 16px;">
+            <div style="font-size: 12px; color: #8D8D9C; margin-bottom: 4px;">Bodyweight (lbs)</div>
+            <div style="height: 36px; border: 1px solid #1C1C24; border-radius: 8px; display: flex; align-items: center; padding: 0 10px; color: #8D8D9C; font-size: 13px;">Enter weight</div>
+          </div>
+          <div style="height: 40px; border-radius: 9999px; background: #F5E989; display: flex; align-items: center; justify-content: center; color: #141121; font-weight: 600; font-size: 14px;">Continue</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">BottomCommentActionModal <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Action sheet for comments — reply, copy, delete. Uses isolated background colors: #1D1A2B, #141121, #3b3651.</div>
+    <div class="component-deps">Deps: UserContext, SocialRequest</div>
+    <div class="preview">
+      <div style="background: #1D1A2B; border-radius: 16px; padding: 20px;">
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="padding: 12px; background: #141121; border-radius: 8px; font-size: 13px;">Reply</div>
+          <div style="padding: 12px; background: #141121; border-radius: 8px; font-size: 13px;">Copy Text</div>
+          <div style="padding: 12px; background: #3b3651; border-radius: 8px; font-size: 13px; color: #FF6565;">Delete Comment</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">ChooseWorkoutTargetAthleteModal <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Modal for coaches to select which athlete to log a workout for.</div>
+    <div class="component-deps">Deps: UserContext, APIRequest</div>
+    <div class="preview">
+      <div style="background: #1d1b2a; border-radius: 16px; padding: 20px; text-align: center;">
+        <div style="font-size: 15px; font-weight: 600; margin-bottom: 12px;">Log workout for...</div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: #232329; border-radius: 8px;">
+            <div style="width: 32px; height: 32px; border-radius: 16px; background: #302D3E;"></div>
+            <span style="font-size: 13px;">Myself</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: #232329; border-radius: 8px; border: 1px solid #F5E989;">
+            <div style="width: 32px; height: 32px; border-radius: 16px; background: #302D3E;"></div>
+            <span style="font-size: 13px; color: #F5E989;">Athlete Name</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">CoachOrUserChoiceObject <span class="badge badge-ready">DS-ready</span></div>
+    <div class="component-meta">Radio-style role selector — choose between "Coach" and "Athlete" during profile creation.</div>
+    <div class="component-deps">Props: role, setRole</div>
+    <div class="preview" style="display: flex; gap: 12px;">
+      <div style="flex: 1; padding: 16px; border-radius: 12px; border: 1px solid #F5E989; background: rgba(245,233,137,0.1); text-align: center;">
+        <div style="font-size: 24px; margin-bottom: 8px;">&#x1F3CB;</div>
+        <div style="font-size: 13px; color: #F5E989; font-weight: 600;">Coach</div>
+      </div>
+      <div style="flex: 1; padding: 16px; border-radius: 12px; border: 1px solid #3b3651; text-align: center;">
+        <div style="font-size: 24px; margin-bottom: 8px;">&#x1F4AA;</div>
+        <div style="font-size: 13px; color: #8D8D9C;">Athlete</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">ExpandProfilePicModal <span class="badge badge-possible">DS-possible</span></div>
+    <div class="component-meta">Fullscreen image viewer for profile pictures. Uses bg-black/70 overlay.</div>
+    <div class="component-deps">Props: modalVisible, setModalVisible, onToggleModal, profileUrl, userId</div>
+    <div class="preview">
+      <div style="background: rgba(0,0,0,0.7); border-radius: 12px; padding: 40px; display: flex; align-items: center; justify-content: center;">
+        <div style="width: 160px; height: 160px; border-radius: 80px; background: #302D3E; display: flex; align-items: center; justify-content: center; font-size: 48px;">&#x1F464;</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">PrivacySettingsObject <span class="badge badge-ready">DS-ready</span></div>
+    <div class="component-meta">Toggle options for account privacy settings — public vs. private account selection.</div>
+    <div class="component-deps">Props: privacy, setPrivacy</div>
+    <div class="preview" style="display: flex; flex-direction: column; gap: 8px;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #232329; border-radius: 8px; border: 1px solid #F5E989;">
+        <div style="width: 20px; height: 20px; border-radius: 10px; border: 2px solid #F5E989; display: flex; align-items: center; justify-content: center;"><div style="width: 10px; height: 10px; border-radius: 5px; background: #F5E989;"></div></div>
+        <div><div style="font-size: 13px;">Public</div><div style="font-size: 11px; color: #8D8D9C;">Anyone can see your workouts</div></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #232329; border-radius: 8px;">
+        <div style="width: 20px; height: 20px; border-radius: 10px; border: 2px solid #8D8D9C;"></div>
+        <div><div style="font-size: 13px;">Private</div><div style="font-size: 11px; color: #8D8D9C;">Only followers see your workouts</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">SendWorkoutModal <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Modal to send/share a workout template to another user via search.</div>
+    <div class="component-deps">Deps: UserContext, WorkoutRequest</div>
+    <div class="preview">
+      <div style="background: #1d1b2a; border-radius: 16px; padding: 20px;">
+        <div style="font-size: 15px; font-weight: 600; margin-bottom: 12px;">Send Workout To</div>
+        <div style="display: flex; align-items: center; gap: 8px; background: #232329; border-radius: 12px; padding: 8px 12px; margin-bottom: 12px;">
+          <span style="color: #8D8D9C;">&#x1F50D;</span>
+          <span style="color: #8D8D9C; font-size: 13px;">Search users...</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #232329;">
+          <div style="width: 32px; height: 32px; border-radius: 16px; background: #302D3E;"></div>
+          <span style="font-size: 13px; flex: 1;">sarah_strong</span>
+          <div style="padding: 4px 12px; border-radius: 9999px; background: #F5E989; color: #141121; font-size: 11px; font-weight: 600;">Send</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">WorkoutRequestCard <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Card showing a received workout request with accept/decline actions.</div>
+    <div class="component-deps">Deps: UserContext, WorkoutRequest, navigation</div>
+    <div class="preview">
+      <div style="background: #1d1b2a; border-radius: 12px; padding: 14px; display: flex; align-items: center; gap: 12px;">
+        <div style="width: 40px; height: 40px; border-radius: 20px; background: #302D3E; flex-shrink: 0;"></div>
+        <div style="flex: 1;">
+          <div style="font-size: 13px; font-weight: 600;">Push Day A</div>
+          <div style="font-size: 11px; color: #8D8D9C;">from coach_dan</div>
+        </div>
+        <div style="display: flex; gap: 6px;">
+          <div style="padding: 6px 12px; border-radius: 8px; background: #54BE98; color: #141121; font-size: 11px; font-weight: 600;">Accept</div>
+          <div style="padding: 6px 12px; border-radius: 8px; background: #302D3E; color: #8D8D9C; font-size: 11px;">Decline</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">Referral Components <span class="badge badge-app">App</span></div>
+    <div class="component-meta">ReferralBadge, ReferralBanner, ReferralStar, ReferralInfoModal, ShareReferralModal, ClaimRewardModal</div>
+    <div class="component-deps">Deps: ReferralRequest, UserContext</div>
+    <div class="preview" style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+      <div class="referral-badge" style="background: #F5E989; color: #141121;">&#x2B50; Gold</div>
+      <div class="referral-badge" style="background: #8D8D9C; color: #141121;">&#x2B50; Silver</div>
+      <div class="referral-badge" style="background: #D79029; color: #141121;">&#x2B50; Bronze</div>
+      <div class="referral-badge" style="background: #1DA1F2; color: #fff;">&#x2B50; Diamond</div>
+      <div style="font-size: 11px; color: #717171; width: 100%;">Referral tiers with untokenized colors — #1DA1F2 (diamond blue) has no token</div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">StoredWorkout + StoredWorkoutSkeleton <span class="badge badge-app">App</span> <span class="badge badge-ready">DS-ready</span></div>
+    <div class="component-meta">Workout history card on profile. StoredWorkout is app-specific (APIRequest), skeleton is DS-ready.</div>
+    <div class="preview">
+      <div class="stored-workout">
+        <div class="stored-header">
+          <div class="stored-name">Push Day A</div>
+          <div class="stored-date">Jun 20, 2026</div>
+        </div>
+        <div class="stored-exercises">Bench Press, OHP, Incline DB, Tricep Pushdown &bull; 58 min</div>
+      </div>
+      <div class="stored-workout" style="opacity: 0.5;">
+        <div class="stored-header">
+          <div class="stored-name">Pull Day B</div>
+          <div class="stored-date">Jun 18, 2026</div>
+        </div>
+        <div class="stored-exercises">Deadlift, Barbell Row, Pull-ups, Bicep Curl &bull; 62 min</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">SearchBar <span class="badge badge-possible">DS-possible</span></div>
+    <div class="component-meta">Search input with user search hook. Placeholder color inconsistency: uses #6e7191 (unique to this component).</div>
+    <div class="component-deps">Deps: useUserSearch hook, UserContext</div>
+    <div class="preview">
+      <div class="search-bar">
+        <div class="search-icon">&#x1F50D;</div>
+        <div class="search-placeholder">Search users...</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">CalendarView <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Monthly calendar with workout days highlighted. Shows streaks. Used on StreakStatsScreen.</div>
+    <div class="component-deps">Deps: StatsContext, UserContext</div>
+    <div class="preview">
+      <div style="text-align: center; margin-bottom: 12px; font-size: 14px; font-weight: 600;">June 2026</div>
+      <div class="calendar-grid">
+        <div class="cal-header">S</div><div class="cal-header">M</div><div class="cal-header">T</div><div class="cal-header">W</div><div class="cal-header">T</div><div class="cal-header">F</div><div class="cal-header">S</div>
+        <div class="cal-day cal-rest">1</div><div class="cal-day cal-workout">2</div><div class="cal-day cal-workout">3</div><div class="cal-day cal-rest">4</div><div class="cal-day cal-workout">5</div><div class="cal-day cal-rest">6</div><div class="cal-day cal-rest">7</div>
+        <div class="cal-day cal-streak">8</div><div class="cal-day cal-streak">9</div><div class="cal-day cal-streak">10</div><div class="cal-day cal-rest">11</div><div class="cal-day cal-workout">12</div><div class="cal-day cal-rest">13</div><div class="cal-day cal-rest">14</div>
+        <div class="cal-day cal-workout">15</div><div class="cal-day cal-rest">16</div><div class="cal-day cal-workout">17</div><div class="cal-day cal-workout">18</div><div class="cal-day cal-rest">19</div><div class="cal-day cal-workout">20</div><div class="cal-day cal-rest">21</div>
+        <div class="cal-day cal-workout">22</div><div class="cal-day cal-empty"></div><div class="cal-day cal-empty"></div><div class="cal-day cal-empty"></div><div class="cal-day cal-empty"></div><div class="cal-day cal-empty"></div><div class="cal-day cal-empty"></div>
+      </div>
+      <div style="display: flex; gap: 16px; justify-content: center; margin-top: 12px; font-size: 11px;">
+        <div style="display: flex; align-items: center; gap: 4px;"><div style="width:10px; height:10px; border-radius:2px; background:#F5E989;"></div> Workout</div>
+        <div style="display: flex; align-items: center; gap: 4px;"><div style="width:10px; height:10px; border-radius:2px; background:#54BE98;"></div> Streak</div>
+        <div style="display: flex; align-items: center; gap: 4px;"><div style="width:10px; height:10px; border-radius:2px; background:#232329;"></div> Rest</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">ProfileStatsView <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Stats summary on profile page — displays workout count, total volume, streak info for a given user.</div>
+    <div class="component-deps">Deps: StatsContext, navigation</div>
+    <div class="preview">
+      <div style="display: flex; gap: 16px; padding: 16px; background: #1d1b2a; border-radius: 12px;">
+        <div style="flex: 1; text-align: center;">
+          <div style="font-size: 20px; font-weight: 700; color: #F5E989;">256</div>
+          <div style="font-size: 11px; color: #717171;">Workouts</div>
+        </div>
+        <div style="width: 1px; background: #232329;"></div>
+        <div style="flex: 1; text-align: center;">
+          <div style="font-size: 20px; font-weight: 700; color: #F5E989;">1.2M</div>
+          <div style="font-size: 11px; color: #717171;">Total lbs</div>
+        </div>
+        <div style="width: 1px; background: #232329;"></div>
+        <div style="flex: 1; text-align: center;">
+          <div style="font-size: 20px; font-weight: 700; color: #F5E989;">12</div>
+          <div style="font-size: 11px; color: #717171;">Streak</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">EditExerciseNameModal + EditExerciseNameInformationModal <span class="badge badge-app">App</span> <span class="badge badge-ready">DS-ready</span></div>
+    <div class="component-meta">EditExerciseNameModal — modal to rename/merge exercises in stats (app-specific, UserContext + WorkoutRequest). EditExerciseNameInformationModal — info popup explaining the feature (DS-ready, just text + close).</div>
+    <div class="component-deps">EditExerciseNameModal deps: UserContext, WorkoutRequest</div>
+    <div class="preview">
+      <div style="background: rgba(0,0,0,0.7); border-radius: 12px; padding: 20px; display: flex; justify-content: center;">
+        <div style="background: #1d1b2a; border-radius: 16px; padding: 20px; width: 280px;">
+          <div style="font-size: 15px; font-weight: 600; margin-bottom: 12px;">Rename Exercise</div>
+          <div style="height: 36px; border: 1px solid #1C1C24; border-radius: 8px; display: flex; align-items: center; padding: 0 10px; font-size: 13px; margin-bottom: 12px;">Bench Press</div>
+          <div style="display: flex; gap: 8px;">
+            <div style="flex: 1; padding: 10px; border-radius: 9999px; border: 1px solid #8D8D9C; text-align: center; font-size: 13px; color: #8D8D9C;">Cancel</div>
+            <div style="flex: 1; padding: 10px; border-radius: 9999px; background: #F5E989; text-align: center; font-size: 13px; color: #141121; font-weight: 600;">Save</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">AnalyticsSearchBar <span class="badge badge-possible">DS-possible</span></div>
+    <div class="component-meta">Autocomplete search input for selecting exercises in analytics views. Generic dropdown pattern, could be extracted.</div>
+    <div class="component-deps">Props: handleChooseItemFromDropdown, itemList, defaultText</div>
+    <div class="preview">
+      <div style="position: relative;">
+        <div style="display: flex; align-items: center; gap: 8px; background: #232329; border-radius: 12px; padding: 8px 12px;">
+          <span style="color: #8D8D9C;">&#x1F50D;</span>
+          <span style="font-size: 14px;">Bench Press</span>
+        </div>
+        <div style="position: absolute; top: 44px; left: 0; right: 0; background: #1d1b2a; border-radius: 8px; border: 1px solid #232329; overflow: hidden; z-index: 1;">
+          <div style="padding: 10px 12px; border-bottom: 1px solid #232329; font-size: 13px;">Bench Press (Barbell)</div>
+          <div style="padding: 10px 12px; border-bottom: 1px solid #232329; font-size: 13px; color: #8D8D9C;">Bench Press (Dumbbell)</div>
+          <div style="padding: 10px 12px; font-size: 13px; color: #8D8D9C;">Bench Press (Smith)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">Analytics Charts <span class="badge badge-app">App</span></div>
+    <div class="component-meta">AnalyticsChart, ExerciseOverTimeChart, WorkoutAnalyticsView, ExerciseAnalyticsView, OneRMCalculator</div>
+    <div class="component-deps">Deps: AnalyticsContext, navigation</div>
+    <div class="preview">
+      <div class="chart-placeholder">
+        <div class="chart-bar" style="height: 40%;"></div>
+        <div class="chart-bar" style="height: 55%;"></div>
+        <div class="chart-bar" style="height: 45%;"></div>
+        <div class="chart-bar" style="height: 70%;"></div>
+        <div class="chart-bar" style="height: 65%;"></div>
+        <div class="chart-bar" style="height: 80%;"></div>
+        <div class="chart-bar" style="height: 75%;"></div>
+        <div class="chart-bar" style="height: 90%;"></div>
+        <div class="chart-bar" style="height: 85%;"></div>
+        <div class="chart-bar" style="height: 95%;"></div>
+      </div>
+      <div style="font-size: 11px; color: #717171; margin-top: 8px; text-align: center;">Volume over time — ExerciseOverTimeChart (DS-possible) + TimeframeSelector (DS-ready)</div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">Heatmap + Muscles <span class="badge badge-possible">DS-possible</span></div>
+    <div class="component-meta">SVG body map showing worked muscle groups with color intensity. Muscles uses hardcoded #5e5e5e for inactive.</div>
+    <div class="component-deps">Props: color, thumbnail, customWidth, customHeight</div>
+    <div class="preview" style="display: flex; gap: 24px; align-items: center; justify-content: center;">
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 120px; background: #232329; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #717171; margin-bottom: 4px;">Front SVG</div>
+        <div style="font-size: 10px; color: #8D8D9C;">Front view</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 120px; background: #232329; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #717171; margin-bottom: 4px;">Back SVG</div>
+        <div style="font-size: 10px; color: #8D8D9C;">Back view</div>
+      </div>
+      <div style="font-size: 11px; color: #717171; max-width: 120px;">Muscle intensity: <span style="color: #F5E989;">high</span> → <span style="color: #5e5e5e;">inactive</span></div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">OCR Components <span class="badge badge-app">App</span></div>
+    <div class="component-meta">EditableAthleteInfo, EditableExerciseInfo, EditableWorkoutHeaderInfo, OCRQueueItem — workout card scanning and editing.</div>
+    <div class="component-deps">Deps: UserContext, APIRequest, OCRRequest, WorkoutRequest</div>
+    <div class="preview" style="display: flex; flex-direction: column; gap: 8px;">
+      <div class="ocr-queue-item">
+        <div class="ocr-thumb"></div>
+        <div class="ocr-info">
+          <div style="font-size: 13px; font-weight: 600; margin-bottom: 2px;">Workout Card #1</div>
+          <div style="font-size: 11px; color: #8D8D9C;">3 exercises detected</div>
+          <div class="ocr-status" style="background: #54BE98; color: #141121; margin-top: 4px;">Processed</div>
+        </div>
+      </div>
+      <div class="ocr-queue-item">
+        <div class="ocr-thumb"></div>
+        <div class="ocr-info">
+          <div style="font-size: 13px; font-weight: 600; margin-bottom: 2px;">Workout Card #2</div>
+          <div style="font-size: 11px; color: #8D8D9C;">Awaiting processing</div>
+          <div class="ocr-status" style="background: #E6B800; color: #141121; margin-top: 4px;">Queued</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">BottomOfScreenMenu (NavBar) <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Main app navigation bar — Home, Workout, Stats, Profile tabs. Used in 14 screens. App-specific due to deep context + API + navigation deps.</div>
+    <div class="component-deps">Deps: UserContext, AutosaveContext, WorkoutRequest, SocialRequest, navigation</div>
+    <div class="preview">
+      <div style="display: flex; align-items: center; justify-content: space-around; background: #1d1b2a; border-radius: 12px; padding: 10px 8px;">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+          <div style="width: 24px; height: 24px; border-radius: 4px; background: #302D3E;"></div>
+          <div style="font-size: 10px; color: #8D8D9C;">Home</div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+          <div style="width: 24px; height: 24px; border-radius: 4px; background: #F5E989;"></div>
+          <div style="font-size: 10px; color: #F5E989;">Workout</div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+          <div style="width: 24px; height: 24px; border-radius: 4px; background: #302D3E;"></div>
+          <div style="font-size: 10px; color: #8D8D9C;">Stats</div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+          <div style="width: 24px; height: 24px; border-radius: 4px; background: #302D3E;"></div>
+          <div style="font-size: 10px; color: #8D8D9C;">Profile</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

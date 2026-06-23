@@ -1,0 +1,201 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teams Components</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #141121; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 32px; }
+  h1 { font-size: 24px; margin-bottom: 8px; color: #F5E989; }
+  .subtitle { color: #8D8D9C; font-size: 14px; margin-bottom: 32px; }
+  .component-card { background: #1d1b2a; border-radius: 16px; padding: 24px; margin-bottom: 16px; }
+  .component-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .component-meta { font-size: 12px; color: #8D8D9C; margin-bottom: 4px; }
+  .component-deps { font-size: 11px; color: #717171; margin-bottom: 16px; }
+  .preview { padding: 20px; background: #141121; border-radius: 12px; }
+  .badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-left: 4px; }
+  .badge-app { background: #302D3E; color: #FF6565; }
+  .badge-possible { background: #232329; color: #E6C466; }
+  .badge-ready { background: #232329; color: #54BE98; }
+
+  .team-card { background: #1d1b2a; border-radius: 16px; padding: 16px; display: flex; gap: 14px; align-items: center; }
+  .team-avatar { width: 56px; height: 56px; border-radius: 12px; background: #302D3E; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+  .team-info { flex: 1; }
+  .team-name { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+  .team-desc { font-size: 12px; color: #8D8D9C; margin-bottom: 4px; }
+  .team-stats { display: flex; gap: 12px; font-size: 11px; color: #717171; }
+  .team-join-btn { padding: 8px 16px; border-radius: 9999px; background: #F5E989; color: #141121; font-size: 12px; font-weight: 600; flex-shrink: 0; }
+
+  .leaderboard-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #232329; }
+  .leaderboard-rank { width: 28px; text-align: center; font-size: 14px; font-weight: 700; }
+  .leaderboard-avatar { width: 32px; height: 32px; border-radius: 16px; background: #302D3E; flex-shrink: 0; }
+  .leaderboard-name { flex: 1; font-size: 13px; }
+  .leaderboard-value { font-size: 14px; font-weight: 600; color: #F5E989; }
+  .leaderboard-unit { font-size: 11px; color: #8D8D9C; }
+
+  .member-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #232329; }
+  .member-avatar { width: 36px; height: 36px; border-radius: 18px; background: #302D3E; flex-shrink: 0; }
+  .member-name { flex: 1; font-size: 14px; }
+  .member-role { font-size: 11px; color: #8076AB; }
+  .member-action { font-size: 18px; color: #8D8D9C; }
+
+  .switch-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #232329; }
+  .switch-label { font-size: 14px; }
+  .switch-desc { font-size: 11px; color: #8D8D9C; }
+  .switch-toggle { width: 44px; height: 24px; border-radius: 12px; position: relative; flex-shrink: 0; }
+  .switch-thumb { width: 20px; height: 20px; border-radius: 10px; background: #fff; position: absolute; top: 2px; }
+  .switch-on { background: #F5E989; }
+  .switch-on .switch-thumb { right: 2px; }
+  .switch-off { background: #767577; }
+  .switch-off .switch-thumb { left: 2px; }
+
+  .toggle-header { display: flex; border-bottom: 2px solid #232329; margin-bottom: 16px; }
+  .toggle-tab { flex: 1; padding: 10px; text-align: center; font-size: 13px; color: #8D8D9C; position: relative; }
+  .toggle-tab-active { color: #F5E989; }
+  .toggle-tab-active::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: #F5E989; }
+
+  .modal-simple { background: #1d1b2a; border-radius: 16px; padding: 24px; text-align: center; max-width: 300px; margin: 0 auto; }
+  .modal-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .modal-desc { font-size: 13px; color: #8D8D9C; margin-bottom: 16px; }
+  .modal-btn { padding: 10px 20px; border-radius: 9999px; font-size: 14px; font-weight: 600; }
+</style>
+</head>
+<body>
+  <h1>Teams Components</h1>
+  <p class="subtitle">27 components — team management, leaderboards, and member views. 3 DS-ready, 3 DS-possible, 21 app-specific.</p>
+
+  <div class="component-card">
+    <div class="component-name">TeamCard <span class="badge badge-possible">DS-possible</span></div>
+    <div class="component-meta">Team list card with avatar, name, description, member count, and join button.</div>
+    <div class="component-deps">Props: name, description, members, volume, img, openModal, team, myTeam, goToTeam, is_public</div>
+    <div class="preview" style="display: flex; flex-direction: column; gap: 12px;">
+      <div class="team-card">
+        <div class="team-avatar">&#x1F3CB;</div>
+        <div class="team-info">
+          <div class="team-name">Iron Warriors</div>
+          <div class="team-desc">Competitive powerlifting crew</div>
+          <div class="team-stats"><span>&#x1F465; 24 members</span><span>&#x1F4AA; 1.2M lbs</span></div>
+        </div>
+        <div class="team-join-btn">Join</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">&#x1F3C3;</div>
+        <div class="team-info">
+          <div class="team-name">Morning Grind</div>
+          <div class="team-desc">5AM workout accountability group</div>
+          <div class="team-stats"><span>&#x1F465; 12 members</span><span>&#x1F4AA; 450K lbs</span></div>
+        </div>
+        <div style="padding: 8px 16px; border-radius: 9999px; border: 1px solid #8D8D9C; color: #8D8D9C; font-size: 12px; flex-shrink: 0;">Joined</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">LeaderboardView + LeaderboardToggleView <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Team leaderboard with tabs for Volume, Workouts, and Exercises. Ranks members by performance.</div>
+    <div class="component-deps">Deps: TeamsContext, UserContext, APIRequest</div>
+    <div class="preview">
+      <div class="toggle-header">
+        <div class="toggle-tab toggle-tab-active">Volume</div>
+        <div class="toggle-tab">Workouts</div>
+        <div class="toggle-tab">Exercises</div>
+      </div>
+      <div class="leaderboard-row">
+        <div class="leaderboard-rank" style="color: #F5E989;">1</div>
+        <div class="leaderboard-avatar"></div>
+        <div class="leaderboard-name">john_lifts</div>
+        <div class="leaderboard-value">45,200 <span class="leaderboard-unit">lbs</span></div>
+      </div>
+      <div class="leaderboard-row">
+        <div class="leaderboard-rank" style="color: #8D8D9C;">2</div>
+        <div class="leaderboard-avatar"></div>
+        <div class="leaderboard-name">sarah_strong</div>
+        <div class="leaderboard-value">38,900 <span class="leaderboard-unit">lbs</span></div>
+      </div>
+      <div class="leaderboard-row">
+        <div class="leaderboard-rank" style="color: #D79029;">3</div>
+        <div class="leaderboard-avatar"></div>
+        <div class="leaderboard-name">mike_fitness</div>
+        <div class="leaderboard-value">31,450 <span class="leaderboard-unit">lbs</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">MembersView + UserCard <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Team member list with role indicators and management actions.</div>
+    <div class="component-deps">Deps: TeamsContext, UserContext, APIRequest</div>
+    <div class="preview">
+      <div class="member-row">
+        <div class="member-avatar"></div>
+        <div class="member-name">john_lifts</div>
+        <div class="member-role">Admin</div>
+        <div class="member-action">&#x22EE;</div>
+      </div>
+      <div class="member-row">
+        <div class="member-avatar"></div>
+        <div class="member-name">sarah_strong</div>
+        <div class="member-role">Member</div>
+        <div class="member-action">&#x22EE;</div>
+      </div>
+      <div class="member-row">
+        <div class="member-avatar"></div>
+        <div class="member-name">mike_fitness</div>
+        <div class="member-role">Member</div>
+        <div class="member-action">&#x22EE;</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">TeamSwitches <span class="badge badge-possible">DS-possible</span></div>
+    <div class="component-meta">Toggle switches for team settings. Uses untokenized colors: track #767577, iOS bg #3e3e3e.</div>
+    <div class="component-deps">No context deps — colors are the only blocker</div>
+    <div class="preview">
+      <div class="switch-row">
+        <div><div class="switch-label">Discoverable</div><div class="switch-desc">Allow others to find this team</div></div>
+        <div class="switch-toggle switch-on"><div class="switch-thumb"></div></div>
+      </div>
+      <div class="switch-row">
+        <div><div class="switch-label">Private</div><div class="switch-desc">Require approval to join</div></div>
+        <div class="switch-toggle switch-off"><div class="switch-thumb"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">DiscoverableModal + PrivateModal <span class="badge badge-ready">DS-ready</span></div>
+    <div class="component-meta">Simple info modals explaining team visibility settings.</div>
+    <div class="preview">
+      <div class="modal-simple">
+        <div class="modal-title">Discoverable Team</div>
+        <div class="modal-desc">When enabled, your team will appear in search results and other users can request to join.</div>
+        <div class="modal-btn" style="background: #F5E989; color: #141121;">Got it</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">Other Teams Components</div>
+    <div class="component-meta" style="margin-bottom: 0;">All app-specific (TeamsContext + UserContext):</div>
+    <div class="component-deps" style="line-height: 1.8;">
+      <strong>TeamHeader</strong> — team page top bar with name, image, member count<br>
+      <strong>TeamHomeScreen</strong> — team discovery and feed with hooks (useTeams, useTeamsSearch, useTeamInvites, useTeamModal)<br>
+      <strong>TeamsHomeHeader</strong> — header with create team + join with code buttons<br>
+      <strong>TeamsFeed</strong> — scrollable team cards grid<br>
+      <strong>JoinTeamWithCodeModal</strong> — code input modal for private teams<br>
+      <strong>MyInvitesModal</strong> — pending team invitations list<br>
+      <strong>TeamInfoModal</strong> — team details popup with join action<br>
+      <strong>TeamMembersHeader / TeamSettingsHeader</strong> — contextual headers<br>
+      <strong>JoinRequestList</strong> — pending join request management<br>
+      <strong>AddLeaderboardExerciseModal / SelectLeaderboardExerciseModal</strong> — exercise picker for leaderboards<br>
+      <strong>LeaderboardExercisesView / LeaderboardSingleExerciseView / LeaderboardVolumeView / LeaderboardWorkoutsView</strong> — leaderboard sub-views<br>
+      <strong>DeleteTeamModal / LeaveTeamModal</strong> — destructive action confirmation modals<br>
+      <strong>TeamEditableProfilePicture</strong> — team avatar editor (same pattern as EditableProfilePic)<br>
+      <strong>ViewAddedMembersModal</strong> — selected members review (DS-possible)
+    </div>
+  </div>
+</body>
+</html>

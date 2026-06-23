@@ -1,0 +1,168 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buttons</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #141121; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 32px; }
+  h1 { font-size: 24px; margin-bottom: 8px; color: #F5E989; }
+  .subtitle { color: #8D8D9C; font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 14px; color: #8076AB; margin-bottom: 12px; margin-top: 28px; text-transform: uppercase; letter-spacing: 1px; }
+  .component-card { background: #1d1b2a; border-radius: 16px; padding: 24px; margin-bottom: 16px; }
+  .component-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .component-props { font-size: 12px; color: #8D8D9C; font-family: monospace; margin-bottom: 16px; }
+  .component-usage { font-size: 11px; color: #717171; margin-bottom: 16px; }
+  .preview { padding: 20px; background: #141121; border-radius: 12px; display: flex; flex-direction: column; gap: 12px; align-items: stretch; }
+  .btn-large { height: 48px; width: 100%; border-radius: 9999px; border: 2px solid; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; font-family: inherit; }
+  .btn-primary { background: transparent; border-color: #F5E989; color: #F5E989; }
+  .btn-filled { background: #F5E989; border-color: #F5E989; color: #141121; }
+  .btn-disabled { background: transparent; border-color: #302D3E; color: #302D3E; cursor: not-allowed; }
+  .btn-arrow { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; background: transparent; border: none; cursor: pointer; }
+  .btn-arrow-text { font-size: 16px; color: #fff; }
+  .btn-arrow-icon { color: #D9D9D9; font-size: 18px; }
+  .btn-choice { padding: 10px 20px; border-radius: 12px; border: 1px solid #3b3651; background: transparent; color: #8D8D9C; font-size: 14px; cursor: pointer; font-family: inherit; }
+  .btn-choice-active { border-color: #F5E989; background: #F5E989; color: #141121; }
+  .btn-back { width: 40px; height: 40px; border-radius: 9999px; border: none; background: transparent; color: #F5E989; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .btn-settings { width: 40px; height: 40px; border-radius: 9999px; border: none; background: transparent; color: #8D8D9C; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .row { display: flex; gap: 12px; align-items: center; }
+  .badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 4px; background: #232329; color: #54BE98; margin-left: 8px; }
+</style>
+</head>
+<body>
+  <h1>Buttons</h1>
+  <p class="subtitle">5 button components — used across 19+ screens. All DS-ready.</p>
+
+  <div class="component-card">
+    <div class="component-name">FlexibleLargeButton <span class="badge">13 screens</span></div>
+    <div class="component-props">props: buttonText, onPress, colorScheme, textColorScheme, disabled</div>
+    <div class="component-usage">Primary CTA — full-width pill button. Used on every form screen.</div>
+    <div class="preview">
+      <button class="btn-large btn-filled">Save Changes</button>
+      <button class="btn-large btn-primary">Sign Up</button>
+      <button class="btn-large btn-disabled" disabled>Disabled</button>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">FlexibleArrowButton <span class="badge">2 screens</span></div>
+    <div class="component-props">props: text, onPress</div>
+    <div class="component-usage">List item / navigation row with right chevron.</div>
+    <div class="preview">
+      <div class="btn-arrow" style="border-bottom: 1px solid #232329;">
+        <span class="btn-arrow-text">Edit Profile</span>
+        <span class="btn-arrow-icon">&#x203A;</span>
+      </div>
+      <div class="btn-arrow" style="border-bottom: 1px solid #232329;">
+        <span class="btn-arrow-text">Change Password</span>
+        <span class="btn-arrow-icon">&#x203A;</span>
+      </div>
+      <div class="btn-arrow">
+        <span class="btn-arrow-text">Privacy Settings</span>
+        <span class="btn-arrow-icon">&#x203A;</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">FlexibleChoiceButton</div>
+    <div class="component-props">props: onPress, highlighted, label</div>
+    <div class="component-usage">Selection chip — highlighted state toggles accent fill.</div>
+    <div class="preview" style="flex-direction: row; flex-wrap: wrap;">
+      <button class="btn-choice btn-choice-active">Strength</button>
+      <button class="btn-choice">Cardio</button>
+      <button class="btn-choice">Flexibility</button>
+      <button class="btn-choice">HIIT</button>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">FlexibleBackButton &amp; SettingsButton</div>
+    <div class="component-props">FlexibleBackButton: styling, onPress, size | SettingsButton: onPress</div>
+    <div class="component-usage">Icon buttons — back arrow and gear icon. Used in headers.</div>
+    <div class="preview" style="flex-direction: row; justify-content: space-between;">
+      <div class="row">
+        <button class="btn-back">&#x2039;</button>
+        <span style="font-size: 13px; color: #8D8D9C;">FlexibleBackButton</span>
+      </div>
+      <div class="row">
+        <span style="font-size: 13px; color: #8D8D9C;">SettingsButton</span>
+        <button class="btn-settings">&#x2699;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">Checkbox</div>
+    <div class="component-props">props: onPress, checked</div>
+    <div class="component-usage">Simple square checkbox — yellow fill when checked.</div>
+    <div class="preview" style="flex-direction: row; gap: 24px;">
+      <div class="row">
+        <div style="width:25px; height:25px; border:1px solid #F5E989; background:#F5E989; border-radius:3px;"></div>
+        <span style="font-size: 14px;">Checked</span>
+      </div>
+      <div class="row">
+        <div style="width:25px; height:25px; border:1px solid #F5E989; border-radius:3px;"></div>
+        <span style="font-size: 14px;">Unchecked</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">PopUpOpen <span class="badge" style="background:#302D3E; color:#FF6565;">App</span></div>
+    <div class="component-props">props: (complex — renders contextual popup menus with icons)</div>
+    <div class="component-usage">Context menu trigger — renders different icon/action sets based on screen context. Contains streak fire color business logic. Used in 5 screens.</div>
+    <div class="preview">
+      <div style="background: #1d1b2a; border-radius: 12px; padding: 16px;">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 10px; padding: 8px; border-radius: 8px; background: #232329;">
+            <span style="font-size: 16px;">&#x270F;</span>
+            <span style="font-size: 13px;">Edit</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 8px; border-radius: 8px; background: #232329;">
+            <span style="font-size: 16px;">&#x1F4CB;</span>
+            <span style="font-size: 13px;">Copy</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 8px; border-radius: 8px; background: #232329;">
+            <span style="font-size: 16px; color: #FF6565;">&#x1F5D1;</span>
+            <span style="font-size: 13px; color: #FF6565;">Delete</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">PopUpClose <span class="badge" style="background:#232329; color:#54BE98;">DS-ready</span></div>
+    <div class="component-props">props: onPress</div>
+    <div class="component-usage">Close/dismiss button — typically an X icon used to close modals and popups. Used alongside PopUpOpen.</div>
+    <div class="preview" style="flex-direction: row; gap: 16px; align-items: center;">
+      <div style="width: 32px; height: 32px; border-radius: 16px; background: #232329; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #8D8D9C; cursor: pointer;">&#x2715;</div>
+      <span style="font-size: 12px; color: #8D8D9C;">Tap to dismiss</span>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">UploadPicOrCameraChooser <span class="badge" style="background:#232329; color:#54BE98;">DS-ready</span></div>
+    <div class="component-props">props: modalVisible, setModalVisible, handleCamera, handlePhotoLibrary</div>
+    <div class="component-usage">Bottom sheet modal for choosing between camera and photo library. Used for profile pic upload.</div>
+    <div class="preview">
+      <div style="background: #1d1b2a; border-radius: 16px; padding: 20px;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: #232329; cursor: pointer;">
+            <span style="font-size: 20px;">&#x1F4F7;</span>
+            <span style="font-size: 14px;">Take Photo</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: #232329; cursor: pointer;">
+            <span style="font-size: 20px;">&#x1F5BC;</span>
+            <span style="font-size: 14px;">Choose from Library</span>
+          </div>
+          <div style="text-align: center; padding: 8px; color: #8D8D9C; font-size: 14px; cursor: pointer;">Cancel</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

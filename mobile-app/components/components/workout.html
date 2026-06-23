@@ -1,0 +1,211 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workout Components</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #141121; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 32px; }
+  h1 { font-size: 24px; margin-bottom: 8px; color: #F5E989; }
+  .subtitle { color: #8D8D9C; font-size: 14px; margin-bottom: 32px; }
+  .component-card { background: #1d1b2a; border-radius: 16px; padding: 24px; margin-bottom: 16px; }
+  .component-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .component-meta { font-size: 12px; color: #8D8D9C; margin-bottom: 4px; }
+  .component-deps { font-size: 11px; color: #717171; margin-bottom: 16px; }
+  .preview { padding: 20px; background: #141121; border-radius: 12px; }
+  .badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-left: 4px; }
+  .badge-app { background: #302D3E; color: #FF6565; }
+  .badge-possible { background: #232329; color: #E6C466; }
+  .badge-ready { background: #232329; color: #54BE98; }
+
+  .exercise-card { background: #1d1b2a; border-radius: 12px; padding: 16px; margin-bottom: 8px; }
+  .exercise-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .exercise-name { font-size: 15px; font-weight: 600; }
+  .exercise-badge { font-size: 10px; color: #54BE98; background: rgba(84,190,152,0.15); padding: 2px 8px; border-radius: 4px; }
+  .set-row { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid #232329; }
+  .set-num { width: 24px; height: 24px; border-radius: 12px; background: #232329; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #8D8D9C; flex-shrink: 0; }
+  .set-input { flex: 1; height: 32px; background: #232329; border-radius: 6px; display: flex; align-items: center; padding: 0 8px; font-size: 13px; }
+  .set-input-label { font-size: 9px; color: #717171; margin-right: 4px; }
+  .set-input-value { color: #F5E989; }
+  .set-check { width: 24px; height: 24px; border-radius: 6px; border: 1px solid #302D3E; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .set-check-done { background: #54BE98; border-color: #54BE98; color: #141121; font-size: 12px; }
+
+  .timer-ring { width: 120px; height: 120px; border-radius: 60px; border: 8px solid #302D3E; display: flex; align-items: center; justify-content: center; flex-direction: column; margin: 0 auto; position: relative; }
+  .timer-ring::before { content: ''; position: absolute; inset: -8px; border-radius: 60px; border: 8px solid transparent; border-top-color: #F5E989; border-right-color: #F5E989; }
+  .timer-time { font-size: 32px; font-weight: 700; }
+  .timer-label { font-size: 11px; color: #8D8D9C; }
+
+  .progress-bar { background: #232329; border-radius: 8px; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; }
+  .progress-text { font-size: 12px; color: #F5E989; }
+  .progress-time { font-size: 12px; color: #8D8D9C; }
+
+  .action-row { display: flex; gap: 8px; }
+  .action-btn { flex: 1; padding: 10px; border-radius: 12px; border: 1px solid #3b3651; text-align: center; font-size: 12px; color: #8D8D9C; }
+
+  .notes-icon { display: flex; align-items: center; gap: 6px; }
+  .notes-dot { width: 6px; height: 6px; border-radius: 3px; background: #F5E989; }
+
+  .rpe-row { display: flex; gap: 4px; }
+  .rpe-item { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
+
+  .summary-toggle { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #232329; }
+  .summary-arrow { color: #F5E989; font-size: 14px; }
+  .summary-text { font-size: 14px; flex: 1; }
+
+  .finish-btn { height: 48px; border-radius: 9999px; background: #F5E989; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600; color: #141121; }
+</style>
+</head>
+<body>
+  <h1>Workout Components</h1>
+  <p class="subtitle">27 components — the core workout tracking UI. 3 DS-ready, 7 DS-possible, 17 app-specific.</p>
+
+  <div class="component-card">
+    <div class="component-name">ExerciseCard + SetInput <span class="badge badge-app">App</span></div>
+    <div class="component-meta">The main workout tracking interface — exercise name, set rows with weight/reps inputs, completion checks.</div>
+    <div class="component-deps">Deps: NewWorkoutFlowContext, ExerciseContext, AutosaveContext</div>
+    <div class="preview">
+      <div class="exercise-card">
+        <div class="exercise-header">
+          <div class="exercise-name">Bench Press</div>
+          <div class="exercise-badge">PR</div>
+        </div>
+        <div class="set-row">
+          <div class="set-num">1</div>
+          <div class="set-input"><span class="set-input-label">lbs</span><span class="set-input-value">185</span></div>
+          <div class="set-input"><span class="set-input-label">reps</span><span class="set-input-value">8</span></div>
+          <div class="set-check set-check-done">&#x2713;</div>
+        </div>
+        <div class="set-row">
+          <div class="set-num">2</div>
+          <div class="set-input"><span class="set-input-label">lbs</span><span class="set-input-value">185</span></div>
+          <div class="set-input"><span class="set-input-label">reps</span><span class="set-input-value">7</span></div>
+          <div class="set-check set-check-done">&#x2713;</div>
+        </div>
+        <div class="set-row">
+          <div class="set-num">3</div>
+          <div class="set-input"><span class="set-input-label">lbs</span><span class="set-input-value">185</span></div>
+          <div class="set-input"><span class="set-input-label">reps</span><span class="set-input-value"></span></div>
+          <div class="set-check"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">RestTimer <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Circular countdown timer between sets. Uses fontSize: 50/45 (off-scale) and borderWidth: 120 (visual ring trick).</div>
+    <div class="component-deps">Deps: NewWorkoutFlowContext</div>
+    <div class="preview" style="text-align: center;">
+      <div class="timer-ring">
+        <div class="timer-time">1:23</div>
+        <div class="timer-label">REST</div>
+      </div>
+      <div style="margin-top: 12px; font-size: 11px; color: #717171;">RestTimerMini also exists as a compact inline variant</div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">RPEInput <span class="badge badge-possible">DS-possible</span></div>
+    <div class="component-meta">Rate of Perceived Exertion selector — 1-10 scale, dropdown-style.</div>
+    <div class="component-deps">Props: onCloseDropdown, clicked, onPress, onSelect, selectedValue</div>
+    <div class="preview">
+      <div class="rpe-row">
+        <div class="rpe-item" style="background:#54BE98; color:#141121;">6</div>
+        <div class="rpe-item" style="background:#CEDA71; color:#141121;">7</div>
+        <div class="rpe-item" style="background:#F5E989; color:#141121;">8</div>
+        <div class="rpe-item" style="background:#D79029; color:#141121;">9</div>
+        <div class="rpe-item" style="background:#FF6565; color:#141121;">10</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">ExerciseSupersetRest <span class="badge badge-possible">DS-possible</span></div>
+    <div class="component-meta">Action buttons between exercises — add exercise, add superset, add cardio, add rest.</div>
+    <div class="component-deps">Props: handleAddExercise, handleAddSuperset, handleAddCardio, handleRest</div>
+    <div class="preview">
+      <div class="action-row">
+        <div class="action-btn">+ Exercise</div>
+        <div class="action-btn">+ Superset</div>
+        <div class="action-btn">+ Cardio</div>
+        <div class="action-btn" style="border-color: #F5E989; color: #F5E989;">+ Rest</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">WorkoutInProgressBar <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Persistent bar showing active workout time and status.</div>
+    <div class="component-deps">Deps: NewWorkoutFlowContext</div>
+    <div class="preview">
+      <div class="progress-bar">
+        <div class="progress-text">Workout in progress</div>
+        <div class="progress-time">00:42:15</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">WorkoutSummaryToggleArrow <span class="badge badge-ready">DS-ready</span></div>
+    <div class="component-meta">Expandable section header — text with collapse/expand arrow.</div>
+    <div class="component-deps">Props: text, showArrow, onPress</div>
+    <div class="preview">
+      <div class="summary-toggle">
+        <div class="summary-arrow">&#x25BC;</div>
+        <div class="summary-text">Bench Press — 4 sets</div>
+      </div>
+      <div class="summary-toggle">
+        <div class="summary-arrow">&#x25B6;</div>
+        <div class="summary-text">Incline DB Press — 3 sets</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">NotesIcon + NotesModal + HyperlinkInput <span class="badge badge-possible">DS-possible</span></div>
+    <div class="component-meta">Notes indicator dot, full-screen notes editor, and URL input for video links.</div>
+    <div class="preview">
+      <div style="display: flex; gap: 24px; align-items: center;">
+        <div class="notes-icon">
+          <div style="font-size: 16px;">&#x1F4DD;</div>
+          <div class="notes-dot"></div>
+          <span style="font-size: 12px; color: #8D8D9C;">Has notes</span>
+        </div>
+        <div class="notes-icon">
+          <div style="font-size: 16px;">&#x1F4DD;</div>
+          <span style="font-size: 12px; color: #717171;">No notes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">FinishWorkoutButton + SavedModal <span class="badge badge-app">App</span> <span class="badge badge-ready">DS-ready</span></div>
+    <div class="component-meta">CTA to end workout + confirmation overlay. FinishWorkoutButton is app-specific (context dep), SavedModal is DS-ready.</div>
+    <div class="preview">
+      <div class="finish-btn">Finish Workout</div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">Other Workout Components</div>
+    <div class="component-meta" style="margin-bottom: 0;">All app-specific (NewWorkoutFlowContext):</div>
+    <div class="component-deps" style="line-height: 1.8;">
+      <strong>CardioInputContainer</strong> — distance/time/calories inputs for cardio exercises<br>
+      <strong>EndWorkoutHeader</strong> — workout summary header on completion screen<br>
+      <strong>ExerciseCardContainer</strong> — wrapper for exercise card navigation<br>
+      <strong>ExerciseView</strong> — full exercise editing view<br>
+      <strong>PastExerciseSearchBar</strong> — search previous exercises to add<br>
+      <strong>AdditionalSettings1RM</strong> — one-rep max calculator settings<br>
+      <strong>AdditionalSettingsButton</strong> — settings dropdown for exercises<br>
+      <strong>AdditionalSettingsBackdownDropdown</strong> — backdown set configuration<br>
+      <strong>SetInputContainer</strong> — wrapper managing set list state, volume calculations, and interleaved supersets (hooks: useDropdownState, useExerciseVolume, useInterleaveSetsOnMount, useSetMutations)<br>
+      <strong>TagDropdown</strong> — dropdown for tagging sets (warmup, drop set, failure, etc.)<br>
+      <strong>TimePicker</strong> — time selection for timed sets<br>
+      <strong>VideoPlayer</strong> — exercise video reference player
+    </div>
+  </div>
+</body>
+</html>

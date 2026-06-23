@@ -1,0 +1,216 @@
+<!-- @dsCard group="Screens" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login & Profile Screens</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0F0F11; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 32px; }
+  h1 { font-size: 24px; margin-bottom: 8px; color: #F5E989; }
+  .subtitle { color: #8D8D9C; font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 14px; color: #8076AB; margin-bottom: 12px; margin-top: 28px; text-transform: uppercase; letter-spacing: 1px; }
+  .screens-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+  .screen-item { }
+  .phone { background: #141121; border-radius: 20px; border: 2px solid #232329; overflow: hidden; aspect-ratio: 9/17; display: flex; flex-direction: column; }
+  .ph-status { height: 24px; display: flex; align-items: center; justify-content: center; font-size: 8px; color: #717171; }
+  .ph-header { height: 40px; display: flex; align-items: center; padding: 0 12px; gap: 6px; border-bottom: 1px solid #232329; flex-shrink: 0; }
+  .ph-back { color: #F5E989; font-size: 14px; }
+  .ph-title { font-size: 13px; font-weight: 600; flex: 1; }
+  .ph-action { width: 16px; height: 16px; border-radius: 3px; background: #232329; }
+  .ph-body { flex: 1; padding: 12px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
+  .ph-navbar { height: 40px; display: flex; align-items: center; justify-content: space-around; border-top: 1px solid #232329; flex-shrink: 0; }
+  .ph-nav-dot { width: 6px; height: 6px; border-radius: 3px; background: #302D3E; }
+  .ph-nav-dot-active { background: #F5E989; }
+  .ph-input { height: 28px; border: 1px solid #1C1C24; border-radius: 6px; display: flex; align-items: center; padding: 0 8px; }
+  .ph-input-label { font-size: 8px; color: #8D8D9C; margin-bottom: 2px; }
+  .ph-input-text { font-size: 9px; color: #8D8D9C; }
+  .ph-btn { height: 32px; border-radius: 9999px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; margin-top: auto; }
+  .ph-btn-primary { background: #F5E989; color: #141121; }
+  .ph-btn-outline { border: 1.5px solid #F5E989; color: #F5E989; }
+  .ph-avatar { width: 48px; height: 48px; border-radius: 24px; background: #302D3E; margin: 0 auto; }
+  .ph-avatar-sm { width: 28px; height: 28px; border-radius: 14px; background: #302D3E; flex-shrink: 0; }
+  .ph-stat { text-align: center; }
+  .ph-stat-num { font-size: 12px; font-weight: 700; }
+  .ph-stat-label { font-size: 7px; color: #717171; }
+  .ph-row { display: flex; align-items: center; gap: 6px; padding: 6px 0; border-bottom: 1px solid #232329; }
+  .ph-row-text { flex: 1; font-size: 9px; }
+  .ph-row-chevron { font-size: 10px; color: #D9D9D9; }
+  .ph-toggle { display: flex; gap: 0; align-self: center; }
+  .ph-toggle-opt { padding: 3px 8px; border-radius: 8px; font-size: 8px; color: #8D8D9C; }
+  .ph-toggle-active { background: #F5E989; color: #141121; font-weight: 600; }
+  .ph-card { background: #1d1b2a; border-radius: 8px; padding: 8px; margin-bottom: 4px; }
+  .ph-skeleton { background: #2c2c2e; border-radius: 4px; }
+  .screen-label { text-align: center; font-size: 11px; font-weight: 600; color: #F5E989; margin-top: 8px; }
+  .screen-deps { text-align: center; font-size: 9px; color: #717171; margin-top: 2px; line-height: 1.4; }
+</style>
+</head>
+<body>
+  <h1>Login & Profile Screens</h1>
+  <p class="subtitle">12 screens — LoginScreens (5) + ProfileAndAccountScreens (7)</p>
+
+  <h2>Login Flow</h2>
+  <div class="screens-row">
+    <!-- WelcomeScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-body" style="align-items: center; justify-content: center; gap: 16px;">
+          <div style="font-size: 28px; font-weight: 700; color: #F5E989;">OLYMPUS</div>
+          <div style="font-size: 9px; color: #8D8D9C; text-align: center;">Track your workouts.<br>Beat your records.</div>
+          <div class="ph-btn ph-btn-primary" style="width: 100%;">Log In</div>
+          <div class="ph-btn ph-btn-outline" style="width: 100%;">Sign Up</div>
+        </div>
+      </div>
+      <div class="screen-label">WelcomeScreen</div>
+      <div class="screen-deps">No deps</div>
+    </div>
+
+    <!-- LoginScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-back">&#x2039;</div><div class="ph-title">Log In</div></div>
+        <div class="ph-body">
+          <div><div class="ph-input-label">Email</div><div class="ph-input"><span class="ph-input-text">email@example.com</span></div></div>
+          <div><div class="ph-input-label">Password</div><div class="ph-input"><span class="ph-input-text">&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;</span></div></div>
+          <div style="font-size: 9px; color: #8076AB; text-align: right;">Forgot Password?</div>
+          <div class="ph-btn ph-btn-primary">Log In</div>
+        </div>
+      </div>
+      <div class="screen-label">LoginScreen</div>
+      <div class="screen-deps">FlexibleHeader, FlexibleTextInput, FlexibleLargeButton, LoadingIcon</div>
+    </div>
+
+    <!-- SignupScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-back">&#x2039;</div><div class="ph-title">Sign Up</div></div>
+        <div class="ph-body">
+          <div><div class="ph-input-label">Email</div><div class="ph-input"></div></div>
+          <div><div class="ph-input-label">Username</div><div class="ph-input"></div></div>
+          <div><div class="ph-input-label">Password</div><div class="ph-input"></div></div>
+          <div><div class="ph-input-label">Confirm</div><div class="ph-input"></div></div>
+          <div style="display: flex; align-items: center; gap: 6px; font-size: 8px; color: #8D8D9C;"><div style="width:12px; height:12px; border:1px solid #F5E989; border-radius:2px;"></div>I agree to terms</div>
+          <div class="ph-btn ph-btn-primary">Create Account</div>
+        </div>
+      </div>
+      <div class="screen-label">SignupScreen</div>
+      <div class="screen-deps">+ Checkbox</div>
+    </div>
+
+    <!-- ForgotPassScreen + ConfirmPasswordScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-back">&#x2039;</div><div class="ph-title">Reset Password</div></div>
+        <div class="ph-body">
+          <div><div class="ph-input-label">Email</div><div class="ph-input"></div></div>
+          <div class="ph-btn ph-btn-primary" style="margin-top: 8px;">Send Reset Link</div>
+          <div style="height: 1px; background: #232329; margin: 8px 0;"></div>
+          <div style="font-size: 8px; color: #8D8D9C; text-align: center;">ForgotPassScreen (above)<br>ConfirmPasswordScreen (below)</div>
+          <div><div class="ph-input-label">New Password</div><div class="ph-input"></div></div>
+          <div><div class="ph-input-label">Confirm</div><div class="ph-input"></div></div>
+          <div class="ph-btn ph-btn-primary">Confirm</div>
+        </div>
+      </div>
+      <div class="screen-label">ForgotPass + Confirm</div>
+      <div class="screen-deps">FlexibleHeader, FlexibleTextInput, FlexibleLargeButton</div>
+    </div>
+  </div>
+
+  <div style="font-size: 11px; color: #717171; margin-bottom: 8px;"><strong>CheckLoginScreen</strong> — invisible auth check screen, redirects to Welcome or Home. Deps: UserContext, AutosaveContext, APIRequest, services, newAPI.</div>
+
+  <h2>Profile & Account</h2>
+  <div class="screens-row">
+    <!-- ProfileHomeScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-back">&#x2039;</div><div class="ph-title" style="font-size: 11px;">@john_lifts</div><div class="ph-action"></div></div>
+        <div class="ph-body" style="gap: 6px;">
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <div class="ph-avatar" style="width:36px; height:36px; border-radius:18px;"></div>
+            <div style="display: flex; gap: 8px; flex: 1;">
+              <div class="ph-stat"><div class="ph-stat-num">142</div><div class="ph-stat-label">Followers</div></div>
+              <div class="ph-stat"><div class="ph-stat-num">89</div><div class="ph-stat-label">Following</div></div>
+              <div class="ph-stat"><div class="ph-stat-num">256</div><div class="ph-stat-label">Workouts</div></div>
+            </div>
+          </div>
+          <div class="ph-toggle"><div class="ph-toggle-opt ph-toggle-active">Posts</div><div class="ph-toggle-opt">Workouts</div><div class="ph-toggle-opt">Stats</div></div>
+          <div class="ph-card"><div class="ph-skeleton" style="height: 40px; margin-bottom: 4px;"></div><div style="font-size: 7px; color: #8D8D9C;">Post card</div></div>
+          <div class="ph-card"><div class="ph-skeleton" style="height: 40px; margin-bottom: 4px;"></div><div style="font-size: 7px; color: #8D8D9C;">Post card</div></div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot ph-nav-dot-active"></div></div>
+      </div>
+      <div class="screen-label">ProfileHomeScreen</div>
+      <div class="screen-deps">13 components — most complex screen</div>
+    </div>
+
+    <!-- CreateProfileScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-title">Create Profile</div></div>
+        <div class="ph-body" style="align-items: center;">
+          <div class="ph-avatar"></div>
+          <div style="font-size: 8px; color: #8076AB;">Add photo</div>
+          <div style="width: 100%;"><div class="ph-input-label">Display Name</div><div class="ph-input"></div></div>
+          <div style="width: 100%;"><div class="ph-input-label">Bio</div><div class="ph-input" style="height: 48px;"></div></div>
+          <div style="display: flex; gap: 6px; width: 100%;">
+            <div style="flex:1; padding:8px; border-radius:8px; border:1px solid #F5E989; text-align:center; font-size:8px; color:#F5E989;">Coach</div>
+            <div style="flex:1; padding:8px; border-radius:8px; border:1px solid #3b3651; text-align:center; font-size:8px; color:#8D8D9C;">Athlete</div>
+          </div>
+          <div class="ph-btn ph-btn-primary" style="width: 100%;">Create</div>
+        </div>
+      </div>
+      <div class="screen-label">CreateProfileScreen</div>
+      <div class="screen-deps">EditableProfilePic, CoachOrUserChoiceObject, PrivacySettingsObject, + form components</div>
+    </div>
+
+    <!-- EditProfileScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-back">&#x2039;</div><div class="ph-title">Edit Profile</div></div>
+        <div class="ph-body" style="align-items: center;">
+          <div class="ph-avatar"></div>
+          <div style="font-size: 8px; color: #8076AB;">Change photo</div>
+          <div style="width: 100%;"><div class="ph-input-label">Display Name</div><div class="ph-input"><span class="ph-input-text">John Smith</span></div></div>
+          <div style="width: 100%;"><div class="ph-input-label">Username</div><div class="ph-input"><span class="ph-input-text">john_lifts</span></div></div>
+          <div style="width: 100%;"><div class="ph-input-label">Bio</div><div class="ph-input" style="height: 48px;"><span class="ph-input-text">Lifting since 2020</span></div></div>
+          <div class="ph-btn ph-btn-primary" style="width: 100%;">Save Changes</div>
+        </div>
+      </div>
+      <div class="screen-label">EditProfileScreen</div>
+      <div class="screen-deps">EditableProfilePic, PrivacySettingsObject, + form</div>
+    </div>
+
+    <!-- SettingsScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-back">&#x2039;</div><div class="ph-title">Settings</div></div>
+        <div class="ph-body" style="gap: 0;">
+          <div class="ph-row"><div class="ph-avatar-sm" style="width:24px; height:24px; border-radius:12px;"></div><div class="ph-row-text">john_lifts</div><div class="ph-row-chevron">&#x203A;</div></div>
+          <div class="ph-row"><div class="ph-row-text">Edit Profile</div><div class="ph-row-chevron">&#x203A;</div></div>
+          <div class="ph-row"><div class="ph-row-text">Account</div><div class="ph-row-chevron">&#x203A;</div></div>
+          <div class="ph-row"><div class="ph-row-text">Change Password</div><div class="ph-row-chevron">&#x203A;</div></div>
+          <div class="ph-row"><div class="ph-row-text">Community Guidelines</div><div class="ph-row-chevron">&#x203A;</div></div>
+          <div class="ph-btn ph-btn-outline" style="margin-top: 16px; border-color: #FF6565; color: #FF6565;">Log Out</div>
+        </div>
+      </div>
+      <div class="screen-label">SettingsScreen</div>
+      <div class="screen-deps">FlexibleArrowButton, FlexibleHeader, ProfilePictureSmall</div>
+    </div>
+  </div>
+
+  <div style="font-size: 11px; color: #717171; line-height: 1.6;">
+    <strong>AccountScreen</strong> — email/username display with delete account option. Deps: FlexibleHeader, FlexibleLargeButton, FlexibleTextInput, LoadingIcon.<br>
+    <strong>ChangePasswordScreen</strong> — current + new + confirm password form. Deps: FlexibleHeader, FlexibleLargeButton, FlexibleTextInput.<br>
+    <strong>CommunityGuidelinesScreen</strong> — static text content. Deps: FlexibleHeader only.
+  </div>
+</body>
+</html>

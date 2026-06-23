@@ -1,0 +1,288 @@
+<!-- @dsCard group="Tokens" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Palette</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0F0F11; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 32px; }
+  h1 { font-size: 24px; margin-bottom: 8px; color: #F5E989; }
+  .subtitle { color: #8D8D9C; font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 16px; color: #8076AB; margin-bottom: 16px; margin-top: 32px; text-transform: uppercase; letter-spacing: 1px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .swatch { border-radius: 12px; overflow: hidden; background: #19191C; }
+  .swatch-color { height: 72px; }
+  .swatch-info { padding: 12px; }
+  .swatch-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .swatch-hex { font-size: 12px; color: #8D8D9C; font-family: monospace; }
+  .swatch-role { font-size: 11px; color: #717171; margin-top: 4px; }
+  .section-divider { border: none; border-top: 1px solid #232329; margin: 8px 0 0 0; }
+  .untokenized { border: 1px dashed #3b3651; }
+  .badge { display: inline-block; font-size: 10px; padding: 2px 6px; border-radius: 4px; margin-top: 4px; }
+  .badge-unused { background: #302D3E; color: #8D8D9C; }
+  .badge-duplicate { background: #3b3651; color: #F5E989; }
+  .badge-missing { background: #FF6565; color: #141121; }
+</style>
+</head>
+<body>
+  <h1>Color Palette</h1>
+  <p class="subtitle">17 declared tokens — 15 active, 2 unused. Plus ~8 recurring untokenized colors.</p>
+
+  <h2>Backgrounds & Surfaces</h2>
+  <div class="grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#141121"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">midnight-blue</div>
+        <div class="swatch-hex">#141121</div>
+        <div class="swatch-role">Primary screen bg — 132 uses</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#1d1b2a"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">navy-bg</div>
+        <div class="swatch-hex">#1d1b2a</div>
+        <div class="swatch-role">Secondary bg — 29 uses</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#19191C"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">dark-grey</div>
+        <div class="swatch-hex">#19191C</div>
+        <div class="swatch-role">Card backgrounds — 14 uses</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#232329"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">med-grey</div>
+        <div class="swatch-hex">#232329</div>
+        <div class="swatch-role">Elevated surfaces — 8 uses</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#1C1C24"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">text-box-blue</div>
+        <div class="swatch-hex">#1C1C24</div>
+        <div class="swatch-role">Input field borders — 11 uses</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#302D3E"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">disabled</div>
+        <div class="swatch-hex">#302D3E</div>
+        <div class="swatch-role">Disabled state bg — 8 uses</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#282631"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">med-grey-2</div>
+        <div class="swatch-hex">#282631</div>
+        <div class="swatch-role">Border dividers — 4 uses</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#171719; border: 1px dashed #3b3651"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">deep-gray</div>
+        <div class="swatch-hex">#171719</div>
+        <div class="swatch-role"><span class="badge badge-unused">UNUSED</span></div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#0F0F11; border: 1px dashed #3b3651"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">black-blue</div>
+        <div class="swatch-hex">#0F0F11</div>
+        <div class="swatch-role"><span class="badge badge-unused">UNUSED</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Text Colors</h2>
+  <div class="grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#8D8D9C"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">light-grey</div>
+        <div class="swatch-hex">#8D8D9C</div>
+        <div class="swatch-role">Secondary text — 103 uses</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#8076AB"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">purple-grey</div>
+        <div class="swatch-hex">#8076AB</div>
+        <div class="swatch-role">Accent text / links — 34 uses</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#717171"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">dark-grey-1</div>
+        <div class="swatch-hex">#717171</div>
+        <div class="swatch-role">Muted text — 5 uses</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Accent & Status</h2>
+  <div class="grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#F5E989"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">light-yellow / yellow</div>
+        <div class="swatch-hex">#F5E989</div>
+        <div class="swatch-role">Primary accent — 155 uses <span class="badge badge-duplicate">DUPLICATE</span></div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#E6C466"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">gold</div>
+        <div class="swatch-hex">#E6C466</div>
+        <div class="swatch-role">Secondary accent — 1 use</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#FF6565"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">bright-red</div>
+        <div class="swatch-hex">#FF6565</div>
+        <div class="swatch-role">Error / destructive — 17 uses</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#54BE98"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">green</div>
+        <div class="swatch-hex">#54BE98</div>
+        <div class="swatch-role">Success — 9 uses</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider" style="margin-top: 32px">
+
+  <h2>Untokenized Colors (in active use, no token name)</h2>
+  <div class="grid">
+    <div class="swatch untokenized">
+      <div class="swatch-color" style="background:#969696"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">???</div>
+        <div class="swatch-hex">#969696</div>
+        <div class="swatch-role"><span class="badge badge-missing">38 uses, NO TOKEN</span></div>
+      </div>
+    </div>
+    <div class="swatch untokenized">
+      <div class="swatch-color" style="background:#262433"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">???</div>
+        <div class="swatch-hex">#262433</div>
+        <div class="swatch-role"><span class="badge badge-missing">7 uses, NO TOKEN</span></div>
+      </div>
+    </div>
+    <div class="swatch untokenized">
+      <div class="swatch-color" style="background:#3b3651"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">???</div>
+        <div class="swatch-hex">#3b3651</div>
+        <div class="swatch-role"><span class="badge badge-missing">6 uses, NO TOKEN</span></div>
+      </div>
+    </div>
+    <div class="swatch untokenized">
+      <div class="swatch-color" style="background:#1f1b2f"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">???</div>
+        <div class="swatch-hex">#1f1b2f</div>
+        <div class="swatch-role"><span class="badge badge-missing">5 uses, NO TOKEN</span></div>
+      </div>
+    </div>
+    <div class="swatch untokenized">
+      <div class="swatch-color" style="background:#d3d3d3"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">???</div>
+        <div class="swatch-hex">#d3d3d3</div>
+        <div class="swatch-role"><span class="badge badge-missing">7 uses, NO TOKEN</span></div>
+      </div>
+    </div>
+    <div class="swatch untokenized">
+      <div class="swatch-color" style="background:#ffffff"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">???</div>
+        <div class="swatch-hex">#FFFFFF</div>
+        <div class="swatch-role"><span class="badge badge-missing">20 uses, NO TOKEN</span></div>
+      </div>
+    </div>
+    <div class="swatch untokenized">
+      <div class="swatch-color" style="background:#767577"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">???</div>
+        <div class="swatch-hex">#767577</div>
+        <div class="swatch-role"><span class="badge badge-missing">Switch track — 4 uses</span></div>
+      </div>
+    </div>
+    <div class="swatch untokenized">
+      <div class="swatch-color" style="background:#D9D9D9"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">???</div>
+        <div class="swatch-hex">#D9D9D9</div>
+        <div class="swatch-role"><span class="badge badge-missing">Icon tint — 2 uses</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Streak Fire Color Ramp (hardcoded, duplicated in 2 files)</h2>
+  <div style="display:flex; gap:4px; margin-bottom: 16px; border-radius: 12px; overflow: hidden;">
+    <div style="flex:1; height: 48px; background:#3B7FDF; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:600;">&#x2264;1</div>
+    <div style="flex:1; height: 48px; background:#3EE37C; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:600; color:#141121;">2</div>
+    <div style="flex:1; height: 48px; background:#CEDA71; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:600; color:#141121;">3</div>
+    <div style="flex:1; height: 48px; background:#D79029; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:600;">4</div>
+    <div style="flex:1; height: 48px; background:#FA3C05; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:600;">&#x2265;5</div>
+  </div>
+
+  <h2>Toast Notification Colors (isolated parallel palette)</h2>
+  <div class="grid">
+    <div class="swatch untokenized">
+      <div class="swatch-color" style="background:#CC3333"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">toast error</div>
+        <div class="swatch-hex">#CC3333</div>
+        <div class="swatch-role">vs bright-red #FF6565</div>
+      </div>
+    </div>
+    <div class="swatch untokenized">
+      <div class="swatch-color" style="background:#E6B800"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">toast alert</div>
+        <div class="swatch-hex">#E6B800</div>
+        <div class="swatch-role">vs gold #E6C466</div>
+      </div>
+    </div>
+    <div class="swatch untokenized">
+      <div class="swatch-color" style="background:#4D8C2E"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">toast success</div>
+        <div class="swatch-hex">#4D8C2E</div>
+        <div class="swatch-role">vs green #54BE98</div>
+      </div>
+    </div>
+    <div class="swatch untokenized">
+      <div class="swatch-color" style="background:#2E7FCC"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">toast info</div>
+        <div class="swatch-hex">#2E7FCC</div>
+        <div class="swatch-role">No equivalent token</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

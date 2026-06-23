@@ -1,0 +1,251 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social & Sharing Components</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #141121; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 32px; }
+  h1 { font-size: 24px; margin-bottom: 8px; color: #F5E989; }
+  .subtitle { color: #8D8D9C; font-size: 14px; margin-bottom: 32px; }
+  .component-card { background: #1d1b2a; border-radius: 16px; padding: 24px; margin-bottom: 16px; }
+  .component-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .component-meta { font-size: 12px; color: #8D8D9C; margin-bottom: 4px; }
+  .component-deps { font-size: 11px; color: #717171; margin-bottom: 16px; }
+  .preview { padding: 20px; background: #141121; border-radius: 12px; }
+  .badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-left: 4px; }
+  .badge-app { background: #302D3E; color: #FF6565; }
+  .badge-possible { background: #232329; color: #E6C466; }
+  .badge-ready { background: #232329; color: #54BE98; }
+
+  .post-card { background: #1d1b2a; border-radius: 16px; overflow: hidden; }
+  .post-header { display: flex; align-items: center; gap: 10px; padding: 14px 16px; }
+  .post-avatar { width: 36px; height: 36px; border-radius: 18px; background: #302D3E; flex-shrink: 0; }
+  .post-user { flex: 1; }
+  .post-username { font-size: 14px; font-weight: 600; }
+  .post-time { font-size: 11px; color: #8D8D9C; }
+  .post-streak { display: flex; align-items: center; gap: 4px; }
+  .post-streak-fire { font-size: 14px; }
+  .post-body { padding: 0 16px; }
+  .post-workout-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .post-stats { display: flex; gap: 16px; padding: 12px 0; }
+  .post-stat { display: flex; align-items: center; gap: 4px; }
+  .post-stat-icon { font-size: 14px; }
+  .post-stat-value { font-size: 13px; color: #F5E989; font-weight: 600; }
+  .post-stat-label { font-size: 11px; color: #8D8D9C; }
+  .post-interactions { display: flex; align-items: center; gap: 20px; padding: 12px 16px; border-top: 1px solid #232329; }
+  .post-action { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #8D8D9C; }
+  .post-action-active { color: #F5E989; }
+  .post-location { font-size: 12px; color: #8076AB; padding: 4px 16px 12px; }
+
+  .comment-row { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid #232329; }
+  .comment-avatar { width: 28px; height: 28px; border-radius: 14px; background: #302D3E; flex-shrink: 0; }
+  .comment-body { flex: 1; }
+  .comment-user { font-size: 13px; font-weight: 600; }
+  .comment-text { font-size: 13px; color: #8D8D9C; margin-top: 2px; }
+  .comment-time { font-size: 10px; color: #717171; margin-top: 4px; }
+  .comment-input { display: flex; gap: 8px; align-items: center; padding: 12px 0; }
+  .comment-input-field { flex: 1; height: 36px; border: 1px solid #232329; border-radius: 18px; padding: 0 14px; font-size: 13px; color: #8D8D9C; background: transparent; }
+
+  .follow-btn { padding: 6px 16px; border-radius: 9999px; font-size: 12px; font-weight: 600; }
+  .follow-btn-follow { background: #F5E989; color: #141121; }
+  .follow-btn-following { background: transparent; border: 1px solid #8D8D9C; color: #8D8D9C; }
+  .follow-btn-plus { background: transparent; border: 1px solid #F5E989; color: #F5E989; }
+
+  .empty-state { text-align: center; padding: 32px; }
+  .empty-icon { font-size: 40px; margin-bottom: 12px; opacity: 0.5; }
+  .empty-text { font-size: 14px; color: #8D8D9C; }
+
+  .badges-row { display: flex; gap: 8px; }
+  .stat-badge { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; background: #232329; }
+  .stat-badge-label { font-size: 11px; color: #8D8D9C; }
+  .stat-badge-value { font-size: 13px; color: #F5E989; font-weight: 600; }
+
+  .share-row { display: flex; gap: 12px; justify-content: center; padding: 16px; }
+  .share-btn { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+</style>
+</head>
+<body>
+  <h1>Social & Sharing</h1>
+  <p class="subtitle">21 components across SocialComponents (16) and SharingComponents (5). Mostly app-specific due to UserContext + API deps.</p>
+
+  <div class="component-card">
+    <div class="component-name">SocialPost + SocialPostHeader + SocialPostInteractions <span class="badge badge-app">App</span></div>
+    <div class="component-meta">The main social feed post card — header with avatar/streak, workout stats, and interaction bar.</div>
+    <div class="component-deps">Deps: UserContext, APIRequest, SocialRequest, WorkoutRequest, MediaRequest</div>
+    <div class="preview">
+      <div class="post-card">
+        <div class="post-header">
+          <div class="post-avatar"></div>
+          <div class="post-user">
+            <div class="post-username">john_lifts</div>
+            <div class="post-time">2:30 PM &bull; Push Day A</div>
+          </div>
+          <div class="post-streak">
+            <div class="post-streak-fire" style="color: #FA3C05;">&#x1F525;</div>
+            <span style="font-size: 12px; color: #8D8D9C;">5</span>
+          </div>
+        </div>
+        <div class="post-body">
+          <div class="post-stats">
+            <div class="post-stat">
+              <div class="post-stat-value">12,450</div>
+              <div class="post-stat-label">lbs</div>
+            </div>
+            <div class="post-stat">
+              <div class="post-stat-value">58</div>
+              <div class="post-stat-label">min</div>
+            </div>
+            <div class="post-stat">
+              <div class="post-stat-value">3</div>
+              <div class="post-stat-label">PRs</div>
+            </div>
+          </div>
+        </div>
+        <div class="post-location">&#x1F4CD; Gold's Gym, Venice</div>
+        <div class="post-interactions">
+          <div class="post-action post-action-active">&#x2764; 12</div>
+          <div class="post-action">&#x1F4AC; 3</div>
+          <div class="post-action">&#x1F516;</div>
+          <div class="post-action" style="margin-left: auto;">&#x2197;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">VolumeTimePRsBadges <span class="badge badge-possible">DS-possible</span></div>
+    <div class="component-meta">Compact stat badges showing volume, duration, and PR count.</div>
+    <div class="component-deps">Props: volume, duration, tonnageIncrease, setTimeInSeconds</div>
+    <div class="preview">
+      <div class="badges-row">
+        <div class="stat-badge">
+          <span class="stat-badge-label">Volume</span>
+          <span class="stat-badge-value">12,450 lbs</span>
+        </div>
+        <div class="stat-badge">
+          <span class="stat-badge-label">Time</span>
+          <span class="stat-badge-value">58 min</span>
+        </div>
+        <div class="stat-badge">
+          <span class="stat-badge-label">PRs</span>
+          <span class="stat-badge-value">3 &#x1F3C6;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">Comment + BottomOfScreenComments <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Comment thread view with input. Supports @mentions (MentionText). Placeholder color inconsistency: uses #999999 instead of #8D8D9C.</div>
+    <div class="component-deps">Deps: UserContext, APIRequest, SocialRequest</div>
+    <div class="preview">
+      <div class="comment-row">
+        <div class="comment-avatar"></div>
+        <div class="comment-body">
+          <div class="comment-user">sarah_strong</div>
+          <div class="comment-text">Great workout! Those bench numbers are insane &#x1F4AA;</div>
+          <div class="comment-time">2h ago &bull; Reply</div>
+        </div>
+      </div>
+      <div class="comment-row">
+        <div class="comment-avatar"></div>
+        <div class="comment-body">
+          <div class="comment-user">mike_fitness</div>
+          <div class="comment-text"><span style="color: #8076AB;">@john_lifts</span> keep pushing!</div>
+          <div class="comment-time">1h ago &bull; Reply</div>
+        </div>
+      </div>
+      <div class="comment-input">
+        <div class="comment-avatar" style="width:24px; height:24px; border-radius:12px;"></div>
+        <div class="comment-input-field" style="display:flex; align-items:center;"><span style="color:#999999; font-size:13px;">Add a comment...</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">FollowFollowingButton + PlusFollowButton <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Follow state buttons — three variants: Follow, Following, Requested.</div>
+    <div class="component-deps">Deps: UserContext, SocialRequest</div>
+    <div class="preview" style="display: flex; gap: 12px; align-items: center;">
+      <div class="follow-btn follow-btn-follow">Follow</div>
+      <div class="follow-btn follow-btn-following">Following</div>
+      <div class="follow-btn" style="background: transparent; border: 1px solid #717171; color: #717171;">Requested</div>
+      <div class="follow-btn follow-btn-plus">+ Follow</div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">Bookmark + Like <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Interaction toggles for saving workouts and reacting to posts.</div>
+    <div class="component-deps">Deps: UserContext, APIRequest, WorkoutRequest</div>
+    <div class="preview" style="display: flex; gap: 24px; align-items: center;">
+      <div class="post-action post-action-active" style="font-size: 16px;">&#x2764; 12</div>
+      <div class="post-action" style="font-size: 16px;">&#x2661; 0</div>
+      <div class="post-action post-action-active" style="font-size: 16px;">&#x1F516;</div>
+      <div class="post-action" style="font-size: 16px; color: #717171;">&#x1F516;</div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">EmptySocialHeader + EmptySocialPost <span class="badge badge-ready">DS-ready</span></div>
+    <div class="component-meta">Empty state placeholders when the social feed has no content.</div>
+    <div class="preview">
+      <div class="empty-state">
+        <div class="empty-icon">&#x1F4F1;</div>
+        <div class="empty-text">No posts yet. Follow other athletes to see their workouts here.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">CommentsSettingsModal <span class="badge badge-app">App</span></div>
+    <div class="component-meta">Settings modal for comment threads — report, block, or manage comment visibility.</div>
+    <div class="component-deps">Deps: UserContext, SocialRequest</div>
+    <div class="preview">
+      <div style="background: #1d1b2a; border-radius: 16px; padding: 20px;">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: 8px; background: #232329;">
+            <span style="font-size: 14px;">&#x1F6A9;</span>
+            <span style="font-size: 13px;">Report Comment</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: 8px; background: #232329;">
+            <span style="font-size: 14px; color: #FF6565;">&#x1F6AB;</span>
+            <span style="font-size: 13px; color: #FF6565;">Block User</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">ShareModal + ShareToInstagramModal + ShareToInstagramButton + ShareToIMessageButton + ShareToOtherButton <span class="badge badge-app">App</span></div>
+    <div class="component-meta">5 SharingComponents — ShareModal is the container, ShareToInstagramModal handles IG story formatting with streak fire colors. Three share target buttons: ShareToInstagramButton, ShareToIMessageButton, ShareToOtherButton.</div>
+    <div class="component-deps">Platform-specific sharing APIs (expo-sharing, Instagram Stories API)</div>
+    <div class="preview">
+      <div style="background: #1d1b2a; border-radius: 16px; padding: 20px; text-align: center;">
+        <div style="font-size: 14px; margin-bottom: 16px;">Share Workout</div>
+        <div class="share-row">
+          <div class="share-btn" style="background: linear-gradient(45deg, #833AB4, #E1306C, #F77737);">&#x1F4F7;</div>
+          <div class="share-btn" style="background: #54BE98;">&#x1F4AC;</div>
+          <div class="share-btn" style="background: #232329;">&#x2197;</div>
+        </div>
+        <div style="font-size: 11px; color: #717171; margin-top: 8px;">Instagram &bull; iMessage &bull; Other</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">PostsFeed + VideoScreen <span class="badge badge-app">App</span></div>
+    <div class="component-meta" style="margin-bottom: 0;">
+      <strong>PostsFeed</strong> — infinite scrolling feed of SocialPost cards. Used on HomeScreen, ProfileHomeScreen, TeamScreen.<br>
+      <strong>VideoScreen</strong> — full-screen video player with custom controls (VideoControls is DS-ready).<br>
+      <strong>SocialPostLocation</strong> — location tag display (DS-ready).<br>
+      <strong>SocialPostMediaItem</strong> — single media attachment in a post (image or heatmap thumbnail). Screen sub-component in WorkoutScreens/EndWorkoutScreen/SocialPostMedia/.<br>
+      <strong>SocialPostMedia</strong> — media gallery container for post attachments. Screen sub-component with useHeatMap hook.
+    </div>
+  </div>
+</body>
+</html>

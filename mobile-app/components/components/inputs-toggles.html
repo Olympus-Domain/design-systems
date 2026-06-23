@@ -1,0 +1,166 @@
+<!-- @dsCard group="Components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inputs & Toggles</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #141121; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 32px; }
+  h1 { font-size: 24px; margin-bottom: 8px; color: #F5E989; }
+  .subtitle { color: #8D8D9C; font-size: 14px; margin-bottom: 32px; }
+  .component-card { background: #1d1b2a; border-radius: 16px; padding: 24px; margin-bottom: 16px; }
+  .component-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .component-props { font-size: 12px; color: #8D8D9C; font-family: monospace; margin-bottom: 16px; }
+  .component-usage { font-size: 11px; color: #717171; margin-bottom: 16px; }
+  .preview { padding: 20px; background: #141121; border-radius: 12px; display: flex; flex-direction: column; gap: 16px; }
+  .badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 4px; background: #232329; color: #54BE98; margin-left: 8px; }
+
+  .text-input { height: 40px; width: 100%; border: 1px solid #1C1C24; border-radius: 8px; background: transparent; color: #fff; padding: 0 12px; font-size: 16px; font-family: inherit; outline: none; }
+  .text-input::placeholder { color: #8D8D9C; }
+  .text-input-label { font-size: 13px; color: #8D8D9C; margin-bottom: 4px; }
+
+  .toggle-container { display: flex; gap: 0; background: transparent; }
+  .toggle-option { padding: 8px 20px; border-radius: 16px; font-size: 14px; cursor: pointer; border: none; font-family: inherit; background: transparent; color: #8D8D9C; }
+  .toggle-option-active { background: #F5E989; color: #141121; font-weight: 600; }
+
+  .three-toggle { display: flex; gap: 4px; }
+  .three-toggle-option { flex: 1; padding: 8px 12px; border-radius: 12px; font-size: 13px; cursor: pointer; border: none; font-family: inherit; background: #232329; color: #8D8D9C; text-align: center; }
+  .three-toggle-active { background: #F5E989; color: #141121; font-weight: 600; }
+
+  .slider-track { width: 100%; height: 4px; background: #302D3E; border-radius: 2px; position: relative; }
+  .slider-fill { height: 4px; background: #F5E989; border-radius: 2px; width: 60%; }
+  .slider-thumb { width: 20px; height: 20px; border-radius: 50%; background: #F5E989; position: absolute; top: -8px; left: 58%; }
+  .slider-labels { display: flex; justify-content: space-between; font-size: 12px; color: #8D8D9C; margin-top: 8px; }
+
+  .choice-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .choice-item { padding: 10px 16px; border-radius: 12px; border: 1px solid #3b3651; font-size: 14px; cursor: pointer; }
+  .choice-active { border-color: #F5E989; background: rgba(245,233,137,0.1); color: #F5E989; }
+  .choice-inactive { color: #8D8D9C; }
+
+  .gender-toggle { display: flex; gap: 12px; }
+  .gender-option { flex: 1; padding: 12px; border-radius: 12px; border: 1px solid #3b3651; text-align: center; font-size: 14px; cursor: pointer; }
+  .gender-active { border-color: #F5E989; background: rgba(245,233,137,0.1); color: #F5E989; }
+  .gender-inactive { color: #8D8D9C; }
+
+  .timeframe-row { display: flex; gap: 8px; }
+  .timeframe-item { padding: 6px 14px; border-radius: 9999px; font-size: 13px; border: 1px solid transparent; cursor: pointer; }
+  .timeframe-active { background: #F5E989; color: #141121; font-weight: 600; }
+  .timeframe-inactive { background: #232329; color: #8D8D9C; }
+</style>
+</head>
+<body>
+  <h1>Inputs & Toggles</h1>
+  <p class="subtitle">Core form and selection controls. All DS-ready, no external dependencies.</p>
+
+  <div class="component-card">
+    <div class="component-name">FlexibleTextInput <span class="badge">10 screens</span></div>
+    <div class="component-props">props: (complex — label, value, onChangeText, placeholder, secureTextEntry, etc.)</div>
+    <div class="component-usage">Standard text input with label. Used on every form screen. Placeholder color: #8D8D9C.</div>
+    <div class="preview">
+      <div>
+        <div class="text-input-label">Email</div>
+        <input class="text-input" type="text" placeholder="Enter your email" />
+      </div>
+      <div>
+        <div class="text-input-label">Password</div>
+        <input class="text-input" type="password" placeholder="Enter your password" />
+      </div>
+      <div>
+        <div class="text-input-label">Username</div>
+        <input class="text-input" type="text" value="olympus_user" />
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">TwoOptionToggle <span class="badge">2 screens</span></div>
+    <div class="component-props">props: selectedOption, setSelectedOption, option1, option2</div>
+    <div class="component-usage">Binary selector — pill-shaped highlight on selected option.</div>
+    <div class="preview" style="align-items: center;">
+      <div class="toggle-container">
+        <button class="toggle-option toggle-option-active">Weights</button>
+        <button class="toggle-option">Cardio</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">ThreeOptionToggle</div>
+    <div class="component-props">props: (complex — options array, selectedOption, setSelectedOption)</div>
+    <div class="component-usage">Three-way selector — used for profile tabs (Posts / Workouts / Stats).</div>
+    <div class="preview" style="align-items: center;">
+      <div class="three-toggle">
+        <button class="three-toggle-option three-toggle-active">Posts</button>
+        <button class="three-toggle-option">Workouts</button>
+        <button class="three-toggle-option">Stats</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">RestTimeSlider <span class="badge">2 screens</span></div>
+    <div class="component-props">props: restTime, setRestTime</div>
+    <div class="component-usage">Slider for selecting rest time between sets.</div>
+    <div class="preview">
+      <div>
+        <div style="position: relative;">
+          <div class="slider-track">
+            <div class="slider-fill"></div>
+            <div class="slider-thumb"></div>
+          </div>
+        </div>
+        <div class="slider-labels">
+          <span>0:30</span>
+          <span style="color: #F5E989; font-weight: 600;">1:30</span>
+          <span>5:00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">MultipleChoice</div>
+    <div class="component-props">props: option, selected, onSelect</div>
+    <div class="component-usage">Chip selector for multi-option choices.</div>
+    <div class="preview">
+      <div class="choice-grid">
+        <div class="choice-item choice-active">Push</div>
+        <div class="choice-item choice-inactive">Pull</div>
+        <div class="choice-item choice-active">Legs</div>
+        <div class="choice-item choice-inactive">Core</div>
+        <div class="choice-item choice-inactive">Full Body</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">GenderToggle</div>
+    <div class="component-props">props: selected, onSelect</div>
+    <div class="component-usage">Two-option card selector for gender. From TeamsComponents.</div>
+    <div class="preview">
+      <div class="gender-toggle">
+        <div class="gender-option gender-active">Male</div>
+        <div class="gender-option gender-inactive">Female</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="component-card">
+    <div class="component-name">TimeframeSelector</div>
+    <div class="component-props">props: timeframes, selectedTimeframe, handleSelectTimeframe</div>
+    <div class="component-usage">Pill-based period selector for analytics views.</div>
+    <div class="preview" style="align-items: flex-start;">
+      <div class="timeframe-row">
+        <div class="timeframe-item timeframe-inactive">1W</div>
+        <div class="timeframe-item timeframe-inactive">1M</div>
+        <div class="timeframe-item timeframe-active">3M</div>
+        <div class="timeframe-item timeframe-inactive">6M</div>
+        <div class="timeframe-item timeframe-inactive">1Y</div>
+        <div class="timeframe-item timeframe-inactive">All</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

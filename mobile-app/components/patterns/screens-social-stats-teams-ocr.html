@@ -1,0 +1,336 @@
+<!-- @dsCard group="Screens" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social, Stats, Teams & OCR Screens</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0F0F11; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 32px; }
+  h1 { font-size: 24px; margin-bottom: 8px; color: #F5E989; }
+  .subtitle { color: #8D8D9C; font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 14px; color: #8076AB; margin-bottom: 12px; margin-top: 28px; text-transform: uppercase; letter-spacing: 1px; }
+  .screens-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+  .phone { background: #141121; border-radius: 20px; border: 2px solid #232329; overflow: hidden; aspect-ratio: 9/17; display: flex; flex-direction: column; }
+  .ph-status { height: 24px; display: flex; align-items: center; justify-content: center; font-size: 8px; color: #717171; }
+  .ph-header { height: 40px; display: flex; align-items: center; padding: 0 12px; gap: 6px; border-bottom: 1px solid #232329; flex-shrink: 0; }
+  .ph-back { color: #F5E989; font-size: 14px; }
+  .ph-title { font-size: 13px; font-weight: 600; flex: 1; }
+  .ph-action { width: 16px; height: 16px; border-radius: 3px; background: #232329; }
+  .ph-body { flex: 1; padding: 12px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
+  .ph-navbar { height: 40px; display: flex; align-items: center; justify-content: space-around; border-top: 1px solid #232329; flex-shrink: 0; }
+  .ph-nav-dot { width: 6px; height: 6px; border-radius: 3px; background: #302D3E; }
+  .ph-nav-dot-active { background: #F5E989; }
+  .ph-card { background: #1d1b2a; border-radius: 8px; padding: 8px; margin-bottom: 4px; }
+  .ph-skeleton { background: #2c2c2e; border-radius: 4px; }
+  .ph-row { display: flex; align-items: center; gap: 6px; padding: 6px 0; border-bottom: 1px solid #232329; }
+  .ph-row-text { flex: 1; font-size: 9px; }
+  .ph-row-chevron { font-size: 10px; color: #D9D9D9; }
+  .ph-avatar-sm { width: 24px; height: 24px; border-radius: 12px; background: #302D3E; flex-shrink: 0; }
+  .ph-input { height: 28px; border: 1px solid #1C1C24; border-radius: 6px; display: flex; align-items: center; padding: 0 8px; }
+  .ph-input-text { font-size: 9px; color: #8D8D9C; }
+  .ph-btn { height: 32px; border-radius: 9999px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; }
+  .ph-btn-primary { background: #F5E989; color: #141121; }
+  .ph-toggle { display: flex; gap: 0; align-self: center; }
+  .ph-toggle-opt { padding: 3px 8px; border-radius: 8px; font-size: 8px; color: #8D8D9C; }
+  .ph-toggle-active { background: #F5E989; color: #141121; font-weight: 600; }
+  .ph-cal-row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+  .ph-cal-day { aspect-ratio: 1; border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 7px; }
+  .ph-search { display: flex; align-items: center; gap: 4px; background: #232329; border-radius: 8px; padding: 6px 8px; font-size: 9px; color: #8D8D9C; }
+  .screen-label { text-align: center; font-size: 11px; font-weight: 600; color: #F5E989; margin-top: 8px; }
+  .screen-deps { text-align: center; font-size: 9px; color: #717171; margin-top: 2px; line-height: 1.4; }
+  .ph-leaderboard { display: flex; align-items: center; gap: 6px; padding: 5px 0; border-bottom: 1px solid #232329; }
+  .ph-rank { width: 16px; font-size: 9px; font-weight: 700; text-align: center; }
+  .ph-lb-name { flex: 1; font-size: 9px; }
+  .ph-lb-val { font-size: 9px; color: #F5E989; font-weight: 600; }
+</style>
+</head>
+<body>
+  <h1>Social, Stats, Teams & OCR Screens</h1>
+  <p class="subtitle">18 screens — SocialScreens (4) + StatsScreens (4) + TeamsScreens (6) + OCRScreens (3) + AnalyticsScreens (1)</p>
+
+  <h2>Social Screens</h2>
+  <div class="screens-row">
+    <!-- HomeScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-title">Home</div><div class="ph-action"></div></div>
+        <div class="ph-body" style="gap: 6px;">
+          <div class="ph-card">
+            <div style="display:flex; gap:6px; align-items:center; margin-bottom:4px;"><div class="ph-avatar-sm"></div><div style="font-size:9px; font-weight:600;">sarah_strong</div><div style="font-size:7px; color:#717171; margin-left:auto;">2h</div></div>
+            <div class="ph-skeleton" style="height: 50px; margin-bottom: 4px;"></div>
+            <div style="display:flex; gap:8px; font-size:7px; color:#8D8D9C;"><span>&#x2764; 12</span><span>&#x1F4AC; 3</span></div>
+          </div>
+          <div class="ph-card">
+            <div style="display:flex; gap:6px; align-items:center; margin-bottom:4px;"><div class="ph-avatar-sm"></div><div style="font-size:9px; font-weight:600;">mike_fitness</div><div style="font-size:7px; color:#717171; margin-left:auto;">5h</div></div>
+            <div class="ph-skeleton" style="height: 50px; margin-bottom: 4px;"></div>
+            <div style="display:flex; gap:8px; font-size:7px; color:#8D8D9C;"><span>&#x2764; 8</span><span>&#x1F4AC; 1</span></div>
+          </div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot ph-nav-dot-active"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div></div>
+      </div>
+      <div class="screen-label">HomeScreen</div>
+      <div class="screen-deps">NavBar, NotificationBell, PostsFeed, ReferralInfoModal, ScreenContainer, ScreenHeader</div>
+    </div>
+
+    <!-- SinglePostScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-back">&#x2039;</div><div class="ph-title">Post</div></div>
+        <div class="ph-body">
+          <div class="ph-card">
+            <div style="display:flex; gap:6px; align-items:center; margin-bottom:6px;"><div class="ph-avatar-sm"></div><div style="font-size:10px; font-weight:600;">sarah_strong</div></div>
+            <div class="ph-skeleton" style="height: 80px; margin-bottom: 6px;"></div>
+            <div style="display:flex; gap:8px; font-size:8px; color:#8D8D9C;"><span>&#x2764; 12</span><span>&#x1F4AC; 3</span><span>&#x1F516;</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="screen-label">SinglePostScreen</div>
+      <div class="screen-deps">FlexibleHeader, Heatmap, LoadingIcon, SocialPost</div>
+    </div>
+
+    <!-- NotificationScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-back">&#x2039;</div><div class="ph-title">Notifications</div></div>
+        <div class="ph-body" style="gap: 0;">
+          <div class="ph-row"><div class="ph-avatar-sm"></div><div class="ph-row-text"><strong>sarah</strong> liked your workout</div><div style="font-size:7px; color:#717171;">2h</div></div>
+          <div class="ph-row"><div class="ph-avatar-sm"></div><div class="ph-row-text"><strong>mike</strong> started following you</div><div style="font-size:7px; color:#717171;">5h</div></div>
+          <div class="ph-row"><div class="ph-avatar-sm"></div><div class="ph-row-text"><strong>coach</strong> sent a workout</div><div style="font-size:7px; color:#717171;">1d</div></div>
+        </div>
+      </div>
+      <div class="screen-label">NotificationScreen</div>
+      <div class="screen-deps">NotificationObject, RequestedFollowerList, WorkoutRequestCard</div>
+    </div>
+
+    <!-- RelatedUsersScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-back">&#x2039;</div><div class="ph-title">Followers</div></div>
+        <div class="ph-body">
+          <div class="ph-search">&#x1F50D; Search users</div>
+          <div class="ph-row"><div class="ph-avatar-sm"></div><div class="ph-row-text">sarah_strong</div><div style="padding:2px 8px; border-radius:9999px; background:#F5E989; color:#141121; font-size:7px; font-weight:600;">Following</div></div>
+          <div class="ph-row"><div class="ph-avatar-sm"></div><div class="ph-row-text">mike_fitness</div><div style="padding:2px 8px; border-radius:9999px; background:#F5E989; color:#141121; font-size:7px; font-weight:600;">Following</div></div>
+          <div class="ph-row"><div class="ph-avatar-sm"></div><div class="ph-row-text">new_user</div><div style="padding:2px 8px; border-radius:9999px; border:1px solid #F5E989; color:#F5E989; font-size:7px;">Follow</div></div>
+        </div>
+      </div>
+      <div class="screen-label">RelatedUsersScreen</div>
+      <div class="screen-deps">RelatedUserCard, RequestedFollowerList, SearchBar</div>
+    </div>
+  </div>
+
+  <h2>Stats & Analytics Screens</h2>
+  <div class="screens-row">
+    <!-- StreakStatsScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-back">&#x2039;</div><div class="ph-title">Streaks</div></div>
+        <div class="ph-body">
+          <div style="text-align:center; font-size:10px; margin-bottom:4px;">June 2026</div>
+          <div class="ph-cal-row">
+            <div class="ph-cal-day" style="background:#232329; color:#8D8D9C;">1</div><div class="ph-cal-day" style="background:#F5E989; color:#141121;">2</div><div class="ph-cal-day" style="background:#F5E989; color:#141121;">3</div><div class="ph-cal-day" style="background:#232329; color:#8D8D9C;">4</div><div class="ph-cal-day" style="background:#54BE98; color:#141121;">5</div><div class="ph-cal-day" style="background:#54BE98; color:#141121;">6</div><div class="ph-cal-day" style="background:#232329; color:#8D8D9C;">7</div>
+          </div>
+          <div class="ph-cal-row">
+            <div class="ph-cal-day" style="background:#F5E989; color:#141121;">8</div><div class="ph-cal-day" style="background:#232329; color:#8D8D9C;">9</div><div class="ph-cal-day" style="background:#F5E989; color:#141121;">10</div><div class="ph-cal-day" style="background:#232329; color:#8D8D9C;">11</div><div class="ph-cal-day" style="background:#F5E989; color:#141121;">12</div><div class="ph-cal-day" style="background:#232329; color:#8D8D9C;">13</div><div class="ph-cal-day" style="background:#232329; color:#8D8D9C;">14</div>
+          </div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot ph-nav-dot-active"></div><div class="ph-nav-dot"></div></div>
+      </div>
+      <div class="screen-label">StreakStatsScreen</div>
+      <div class="screen-deps">CalendarView, FlexibleBackButton, FlexibleHeader, NavBar, PopUpOpen</div>
+    </div>
+
+    <!-- ExercisesStatsScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-title">Exercises</div><div class="ph-action"></div></div>
+        <div class="ph-body" style="gap: 0;">
+          <div class="ph-search" style="margin-bottom: 8px;">&#x1F50D; Search exercises</div>
+          <div class="ph-row"><div class="ph-row-text">Bench Press</div><div style="font-size:7px; color:#F5E989;">PR: 225 lbs</div></div>
+          <div class="ph-row"><div class="ph-row-text">Squat</div><div style="font-size:7px; color:#F5E989;">PR: 315 lbs</div></div>
+          <div class="ph-row"><div class="ph-row-text">Deadlift</div><div style="font-size:7px; color:#F5E989;">PR: 405 lbs</div></div>
+          <div class="ph-row"><div class="ph-row-text">OHP</div><div style="font-size:7px; color:#F5E989;">PR: 135 lbs</div></div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot ph-nav-dot-active"></div><div class="ph-nav-dot"></div></div>
+      </div>
+      <div class="screen-label">ExercisesStatsScreen</div>
+      <div class="screen-deps">EditExerciseNameModal, FlexibleHeader, NavBar, PopUpOpen</div>
+    </div>
+
+    <!-- VolumeStatsScreen + DayWorkoutsScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-title">Volume</div></div>
+        <div class="ph-body">
+          <div class="ph-search" style="margin-bottom: 4px;">&#x1F50D; Search exercises</div>
+          <div style="height: 80px; background: #1d1b2a; border-radius: 8px; display: flex; align-items: flex-end; padding: 8px; gap: 3px;">
+            <div style="flex:1; background:#F5E989; border-radius:2px 2px 0 0; height:30%;"></div>
+            <div style="flex:1; background:#F5E989; border-radius:2px 2px 0 0; height:50%;"></div>
+            <div style="flex:1; background:#F5E989; border-radius:2px 2px 0 0; height:40%;"></div>
+            <div style="flex:1; background:#F5E989; border-radius:2px 2px 0 0; height:70%;"></div>
+            <div style="flex:1; background:#F5E989; border-radius:2px 2px 0 0; height:90%;"></div>
+          </div>
+          <div style="font-size: 7px; color: #717171; text-align: center;">Weekly volume chart</div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot ph-nav-dot-active"></div><div class="ph-nav-dot"></div></div>
+      </div>
+      <div class="screen-label">VolumeStatsScreen</div>
+      <div class="screen-deps">FlexibleHeader, NavBar</div>
+    </div>
+
+    <!-- AnalyticsHomeScreen + DayWorkoutsScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-title">Analytics</div></div>
+        <div class="ph-body">
+          <div class="ph-toggle" style="margin-bottom: 4px;"><div class="ph-toggle-opt ph-toggle-active">Exercises</div><div class="ph-toggle-opt">Workouts</div></div>
+          <div style="height: 80px; background: #1d1b2a; border-radius: 8px; display: flex; align-items: flex-end; padding: 8px; gap: 3px;">
+            <div style="flex:1; background:#F5E989; border-radius:2px 2px 0 0; height:40%;"></div>
+            <div style="flex:1; background:#F5E989; border-radius:2px 2px 0 0; height:55%;"></div>
+            <div style="flex:1; background:#F5E989; border-radius:2px 2px 0 0; height:65%;"></div>
+            <div style="flex:1; background:#F5E989; border-radius:2px 2px 0 0; height:80%;"></div>
+            <div style="flex:1; background:#F5E989; border-radius:2px 2px 0 0; height:95%;"></div>
+          </div>
+          <div style="font-size: 7px; color: #717171; text-align: center;">ExerciseAnalyticsView / WorkoutAnalyticsView</div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot ph-nav-dot-active"></div><div class="ph-nav-dot"></div></div>
+      </div>
+      <div class="screen-label">AnalyticsHomeScreen</div>
+      <div class="screen-deps">ExerciseAnalyticsView, WorkoutAnalyticsView, FlexibleHeader, NavBar</div>
+    </div>
+  </div>
+  <div style="font-size: 11px; color: #717171; margin-bottom: 24px;"><strong>DayWorkoutsScreen</strong> — detail view for a single day's workouts, accessed from calendar. Deps: FlexibleHeader, NavBar, WorkoutStatsRequest.</div>
+
+  <h2>Teams Screens</h2>
+  <div class="screens-row">
+    <!-- TeamHomeScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-title">Teams</div><div class="ph-action"></div></div>
+        <div class="ph-body" style="gap: 6px;">
+          <div class="ph-card" style="display: flex; gap: 8px; align-items: center;">
+            <div style="width:36px; height:36px; border-radius:8px; background:#302D3E; flex-shrink:0;"></div>
+            <div style="flex:1;"><div style="font-size:10px; font-weight:600;">Iron Warriors</div><div style="font-size:7px; color:#8D8D9C;">24 members</div></div>
+          </div>
+          <div class="ph-card" style="display: flex; gap: 8px; align-items: center;">
+            <div style="width:36px; height:36px; border-radius:8px; background:#302D3E; flex-shrink:0;"></div>
+            <div style="flex:1;"><div style="font-size:10px; font-weight:600;">Morning Grind</div><div style="font-size:7px; color:#8D8D9C;">12 members</div></div>
+          </div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot ph-nav-dot-active"></div></div>
+      </div>
+      <div class="screen-label">TeamHomeScreen</div>
+      <div class="screen-deps">TeamsFeed, TeamsHomeHeader, JoinTeamWithCodeModal, MyInvitesModal, TeamInfoModal</div>
+    </div>
+
+    <!-- TeamScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-back">&#x2039;</div><div class="ph-title" style="font-size:11px;">Iron Warriors</div><div class="ph-action"></div></div>
+        <div class="ph-body" style="gap: 4px;">
+          <div class="ph-toggle"><div class="ph-toggle-opt">Feed</div><div class="ph-toggle-opt ph-toggle-active">Leaderboard</div></div>
+          <div class="ph-leaderboard"><div class="ph-rank" style="color:#F5E989;">1</div><div class="ph-avatar-sm" style="width:20px; height:20px; border-radius:10px;"></div><div class="ph-lb-name">john_lifts</div><div class="ph-lb-val">45.2K</div></div>
+          <div class="ph-leaderboard"><div class="ph-rank">2</div><div class="ph-avatar-sm" style="width:20px; height:20px; border-radius:10px;"></div><div class="ph-lb-name">sarah</div><div class="ph-lb-val">38.9K</div></div>
+          <div class="ph-leaderboard"><div class="ph-rank" style="color:#D79029;">3</div><div class="ph-avatar-sm" style="width:20px; height:20px; border-radius:10px;"></div><div class="ph-lb-name">mike</div><div class="ph-lb-val">31.5K</div></div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot ph-nav-dot-active"></div></div>
+      </div>
+      <div class="screen-label">TeamScreen</div>
+      <div class="screen-deps">LeaderboardView, TeamHeader, PostsFeed, NavBar</div>
+    </div>
+
+    <!-- TeamSettingsScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-back">&#x2039;</div><div class="ph-title" style="font-size:11px;">Team Settings</div></div>
+        <div class="ph-body" style="gap: 6px;">
+          <div style="text-align:center;"><div style="width:48px; height:48px; border-radius:12px; background:#302D3E; margin:0 auto;"></div></div>
+          <div><div style="font-size:8px; color:#8D8D9C; margin-bottom:2px;">Team Name</div><div class="ph-input"><span class="ph-input-text">Iron Warriors</span></div></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 0; border-bottom:1px solid #232329;"><div style="font-size:9px;">Discoverable</div><div style="width:28px; height:16px; border-radius:8px; background:#F5E989;"></div></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 0; border-bottom:1px solid #232329;"><div style="font-size:9px;">Private</div><div style="width:28px; height:16px; border-radius:8px; background:#767577;"></div></div>
+        </div>
+      </div>
+      <div class="screen-label">TeamSettingsScreen</div>
+      <div class="screen-deps">TeamSwitches, DiscoverableModal, PrivateModal, DeleteTeamModal, LeaveTeamModal, TeamEditableProfilePicture</div>
+    </div>
+
+    <!-- TeamMembersScreen + AddMembersScreen + CreateTeamScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-back">&#x2039;</div><div class="ph-title" style="font-size:11px;">Members</div><div style="font-size:8px; color:#F5E989;">Edit</div></div>
+        <div class="ph-body" style="gap: 0;">
+          <div class="ph-row"><div class="ph-avatar-sm"></div><div class="ph-row-text">john_lifts</div><div style="font-size:7px; color:#8076AB;">Admin</div></div>
+          <div class="ph-row"><div class="ph-avatar-sm"></div><div class="ph-row-text">sarah_strong</div><div style="font-size:7px; color:#8D8D9C;">Member</div></div>
+          <div class="ph-row"><div class="ph-avatar-sm"></div><div class="ph-row-text">mike_fitness</div><div style="font-size:7px; color:#8D8D9C;">Member</div></div>
+          <div style="height:1px; background:#232329; margin:8px 0;"></div>
+          <div style="font-size:7px; color:#717171; text-align:center;">TeamMembersScreen (above)<br>AddMembersScreen &amp; CreateTeamScreen also in this group</div>
+        </div>
+      </div>
+      <div class="screen-label">Members + Add + Create</div>
+      <div class="screen-deps">MembersView, TeamMembersHeader, SearchBar, ViewAddedMembersModal</div>
+    </div>
+  </div>
+
+  <h2>OCR Screens</h2>
+  <div class="screens-row" style="grid-template-columns: repeat(3, 1fr);">
+    <!-- WorkoutCardSubmissionScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-title">Scan Workout</div></div>
+        <div class="ph-body" style="align-items: center; justify-content: center; gap: 12px;">
+          <div style="width: 120px; height: 160px; border: 2px dashed #3b3651; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: #3b3651;">&#x1F4F7;</div>
+          <div style="font-size: 9px; color: #8D8D9C; text-align: center;">Take a photo of your<br>workout card</div>
+          <div class="ph-btn ph-btn-primary" style="width: 100%;">Upload Card</div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot"></div><div class="ph-nav-dot ph-nav-dot-active"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div></div>
+      </div>
+      <div class="screen-label">WorkoutCardSubmissionScreen</div>
+      <div class="screen-deps">FlexibleHeader, FlexibleLargeButton, LoadingIcon, NavBar, OCRQueueItem, PopUpClose</div>
+    </div>
+
+    <!-- EditableOCRResultsScreen -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-back">&#x2039;</div><div class="ph-title" style="font-size:11px;">Review Results</div></div>
+        <div class="ph-body">
+          <div class="ph-card"><div style="font-size:8px; color:#8076AB; margin-bottom:2px;">Athlete</div><div class="ph-input"><span class="ph-input-text">John Smith</span></div></div>
+          <div class="ph-card"><div style="font-size:8px; color:#8076AB; margin-bottom:2px;">Exercise 1</div><div class="ph-input" style="margin-bottom:4px;"><span class="ph-input-text">Bench Press</span></div><div style="font-size:7px; color:#8D8D9C;">3 &times; 8 @ 185 lbs</div></div>
+          <div class="ph-card"><div style="font-size:8px; color:#8076AB; margin-bottom:2px;">Exercise 2</div><div class="ph-input" style="margin-bottom:4px;"><span class="ph-input-text">Squat</span></div><div style="font-size:7px; color:#8D8D9C;">4 &times; 5 @ 275 lbs</div></div>
+          <div class="ph-btn ph-btn-primary" style="margin-top: auto;">Save Workout</div>
+        </div>
+        <div class="ph-navbar"><div class="ph-nav-dot"></div><div class="ph-nav-dot ph-nav-dot-active"></div><div class="ph-nav-dot"></div><div class="ph-nav-dot"></div></div>
+      </div>
+      <div class="screen-label">EditableOCRResultsScreen</div>
+      <div class="screen-deps">EditableAthleteInfo, EditableExerciseInfo, EditableWorkoutHeaderInfo, + form</div>
+    </div>
+
+    <!-- OCRTemplateConfig -->
+    <div class="screen-item">
+      <div class="phone">
+        <div class="ph-status">9:41</div>
+        <div class="ph-header"><div class="ph-back">&#x2039;</div><div class="ph-title" style="font-size:11px;">OCR Template</div></div>
+        <div class="ph-body" style="align-items: center; justify-content: center;">
+          <div style="font-size: 9px; color: #8D8D9C; text-align: center;">Template configuration<br>for workout card scanning</div>
+        </div>
+      </div>
+      <div class="screen-label">OCRTemplateConfig</div>
+      <div class="screen-deps">No component deps</div>
+    </div>
+  </div>
+</body>
+</html>

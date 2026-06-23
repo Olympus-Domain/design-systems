@@ -1,0 +1,156 @@
+<!-- @dsCard group="Tokens" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spacing, Sizing & Radius</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0F0F11; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 32px; }
+  h1 { font-size: 24px; margin-bottom: 8px; color: #F5E989; }
+  .subtitle { color: #8D8D9C; font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 16px; color: #8076AB; margin-bottom: 16px; margin-top: 32px; text-transform: uppercase; letter-spacing: 1px; }
+
+  .height-row { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+  .height-bar { background: #F5E989; border-radius: 8px; display: flex; align-items: center; padding: 0 16px; }
+  .height-label { font-size: 13px; font-family: monospace; color: #F5E989; width: 200px; }
+  .height-value { font-size: 12px; color: #141121; font-weight: 600; }
+
+  .spacing-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+  .spacing-label { font-size: 13px; font-family: monospace; color: #8D8D9C; width: 240px; }
+  .spacing-bar { background: #8076AB; border-radius: 4px; height: 24px; }
+  .spacing-val { font-size: 12px; color: #717171; width: 60px; }
+
+  .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; }
+  .radius-item { text-align: center; }
+  .radius-box { width: 80px; height: 80px; border: 2px solid #F5E989; margin: 0 auto 8px; }
+  .radius-name { font-size: 12px; font-family: monospace; color: #F5E989; }
+  .radius-value { font-size: 11px; color: #8D8D9C; }
+  .radius-count { font-size: 11px; color: #717171; }
+
+  .overlay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .overlay-item { height: 80px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 1px solid #3b3651; position: relative; overflow: hidden; }
+  .overlay-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #F5E989 0%, #54BE98 100%); }
+  .overlay-fg { position: relative; z-index: 1; font-size: 12px; font-weight: 600; }
+  .overlay-val { position: relative; z-index: 1; font-size: 11px; color: rgba(255,255,255,0.7); }
+</style>
+</head>
+<body>
+  <h1>Spacing, Sizing & Radius</h1>
+  <p class="subtitle">3 height tokens, 1 spacing token. Most spacing uses Tailwind defaults or hardcoded values.</p>
+
+  <h2>Component Heights (tokenized)</h2>
+  <div class="height-row">
+    <div class="height-label">h-header</div>
+    <div class="height-bar" style="height:56px; width: 300px;"><span class="height-value">56px</span></div>
+  </div>
+  <div class="height-row">
+    <div class="height-label">h-button</div>
+    <div class="height-bar" style="height:48px; width: 300px;"><span class="height-value">48px</span></div>
+  </div>
+  <div class="height-row">
+    <div class="height-label">h-input</div>
+    <div class="height-bar" style="height:40px; width: 300px;"><span class="height-value">40px</span></div>
+  </div>
+
+  <h2>Spacing (only 1 token)</h2>
+  <div class="spacing-row">
+    <div class="spacing-label">screenHorizontalPadding (token)</div>
+    <div class="spacing-bar" style="width: 64px;"></div>
+    <div class="spacing-val">16px</div>
+  </div>
+  <div style="margin-top: 16px; padding: 16px; background: #1d1b2a; border-radius: 8px;">
+    <p style="font-size: 13px; color: #8D8D9C; margin-bottom: 8px;">Most-used hardcoded spacing (in StyleSheet objects):</p>
+    <div class="spacing-row">
+      <div class="spacing-label" style="color:#FF6565">10px — margin/padding (24 uses)</div>
+      <div class="spacing-bar" style="width: 40px; background: #FF6565;"></div>
+      <div class="spacing-val">10px</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label" style="color:#FF6565">5px — margin/padding (8 uses)</div>
+      <div class="spacing-bar" style="width: 20px; background: #FF6565;"></div>
+      <div class="spacing-val">5px</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label" style="color:#FF6565">20px — padding (7 uses)</div>
+      <div class="spacing-bar" style="width: 80px; background: #FF6565;"></div>
+      <div class="spacing-val">20px</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label" style="color:#FF6565">8px — padding (6 uses)</div>
+      <div class="spacing-bar" style="width: 32px; background: #FF6565;"></div>
+      <div class="spacing-val">8px</div>
+    </div>
+  </div>
+
+  <h2>Border Radius</h2>
+  <div class="radius-grid">
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius: 9999px;"></div>
+      <div class="radius-name">rounded-full</div>
+      <div class="radius-value">9999px</div>
+      <div class="radius-count">59 uses</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius: 16px;"></div>
+      <div class="radius-name">rounded-2xl</div>
+      <div class="radius-value">16px</div>
+      <div class="radius-count">19 uses</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius: 12px;"></div>
+      <div class="radius-name">rounded-xl</div>
+      <div class="radius-value">12px</div>
+      <div class="radius-count">34 uses</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius: 8px;"></div>
+      <div class="radius-name">rounded-lg</div>
+      <div class="radius-value">8px</div>
+      <div class="radius-count">42 uses</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius: 6px;"></div>
+      <div class="radius-name">rounded-md</div>
+      <div class="radius-value">6px</div>
+      <div class="radius-count">13 uses</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius: 4px;"></div>
+      <div class="radius-name">rounded</div>
+      <div class="radius-value">4px</div>
+      <div class="radius-count">28 uses</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius: 24px;"></div>
+      <div class="radius-name">rounded-3xl</div>
+      <div class="radius-value">24px</div>
+      <div class="radius-count">7 uses</div>
+    </div>
+  </div>
+
+  <h2>Modal Overlay Opacity</h2>
+  <p style="font-size: 13px; color: #8D8D9C; margin-bottom: 16px;">6 different implementations for the same pattern. <code style="color:#F5E989">bg-black/70</code> is the dominant one (10 modals).</p>
+  <div class="overlay-grid">
+    <div class="overlay-item">
+      <div class="overlay-bg"></div>
+      <div style="position:absolute; inset:0; background: rgba(0,0,0,0.5);"></div>
+      <div class="overlay-fg">rgba(0,0,0,0.5)</div>
+      <div class="overlay-val">6 modals</div>
+    </div>
+    <div class="overlay-item">
+      <div class="overlay-bg"></div>
+      <div style="position:absolute; inset:0; background: rgba(0,0,0,0.7);"></div>
+      <div class="overlay-fg">bg-black/70</div>
+      <div class="overlay-val">10 modals</div>
+    </div>
+    <div class="overlay-item">
+      <div class="overlay-bg"></div>
+      <div style="position:absolute; inset:0; background: rgba(20,18,32,0.9);"></div>
+      <div class="overlay-fg">rgba(20,18,32,0.9)</div>
+      <div class="overlay-val">2 modals</div>
+    </div>
+  </div>
+</body>
+</html>
